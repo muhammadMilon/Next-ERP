@@ -1,4 +1,3 @@
-import { MapPin } from "lucide-react";
 import { COMPANY } from "@/lib/data/reference";
 
 export function Footer() {
@@ -10,16 +9,9 @@ export function Footer() {
           <span className="text-ink-300">·</span>
           <span className="font-semibold text-brand-600">{COMPANY.name}</span>
           <span className="text-ink-300">·</span>
-          <span>Director: {COMPANY.director}</span>
-          <span className="text-ink-300">·</span>
-          <a href={`tel:${COMPANY.mobile}`} className="transition-colors hover:text-brand-600">
-            {COMPANY.mobile}
-          </a>
+          <span>{COMPANY.tagline}</span>
         </p>
-        <p className="flex items-center gap-1.5">
-          <MapPin className="size-3.5 text-ink-400" aria-hidden />
-          {COMPANY.address}
-        </p>
+        <p>Frontend prototype build — no backend, data lives in your browser.</p>
       </div>
     </footer>
   );

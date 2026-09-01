@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AppStoreProvider } from "@/store/app-store";
+import { CpsStoreProvider } from "@/lib/cps/store";
 import { ToastHost } from "@/components/layout/ToastHost";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -20,34 +21,40 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Smart ERP — Smart Global IT",
-    template: "%s · Smart ERP",
+    default: "Noor ERP — Noor IT Solutions",
+    template: "%s · Noor ERP",
   },
   description:
-    "Purchase and Inventory management for manufacturing — a Smart Global IT product.",
-  applicationName: "Smart ERP",
-  authors: [{ name: "Smart Global IT" }],
-  keywords: ["ERP", "Purchase Management", "Inventory Management", "Smart Global IT"],
+    "Central Procurement, Purchase and Inventory management — a Noor IT Solutions product.",
+  applicationName: "Noor ERP",
+  authors: [{ name: "Noor IT Solutions" }],
+  keywords: [
+    "ERP",
+    "Central Procurement System",
+    "Purchase Management",
+    "Inventory Management",
+    "Noor IT Solutions",
+  ],
   openGraph: {
     type: "website",
-    siteName: "Smart ERP",
-    title: "Smart ERP — Smart Global IT",
+    siteName: "Noor ERP",
+    title: "Noor ERP — Noor IT Solutions",
     description:
-      "Procurement and inventory under one control tower: requisition to award, gate receiving to a clean three-way match.",
+      "Unit requisition to consolidated purchase order: simple, controlled and traceable central procurement.",
     url: "/",
-    images: [{ url: "/company-logo.jpeg", width: 512, height: 512, alt: "Smart Global IT" }],
+    images: [{ url: "/brand-mark.svg", width: 512, height: 512, alt: "Noor IT Solutions" }],
   },
   twitter: {
     card: "summary",
-    title: "Smart ERP — Smart Global IT",
-    description: "Purchase and Inventory management for manufacturing.",
-    images: ["/company-logo.jpeg"],
+    title: "Noor ERP — Noor IT Solutions",
+    description: "Central Procurement, Purchase and Inventory management.",
+    images: ["/brand-mark.svg"],
   },
   robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#eb6834",
+  themeColor: "#0d9488",
   width: "device-width",
   initialScale: 1,
 };
@@ -57,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full font-sans">
         <AppStoreProvider>
-          {children}
+          <CpsStoreProvider>{children}</CpsStoreProvider>
           <ToastHost />
         </AppStoreProvider>
       </body>

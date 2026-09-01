@@ -4,23 +4,36 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  /* ── Brand: white + soft orange ─────────────────────────── */
-  --color-brand-50: #fff7f2;
-  --color-brand-100: #ffe9dd;
-  --color-brand-200: #ffd4bd;
-  --color-brand-300: #fdb68f;
-  --color-brand-400: #f79263;
-  --color-brand-500: #eb6834;
-  --color-brand-600: #d2521f;
-  --color-brand-700: #ae4118;
-  --color-brand-800: #8a3415;
-  --color-brand-900: #6f2c14;
+  /* ── Brand: white + teal (Noor IT Solutions) ────────────── */
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+
+  /* ── Navy: the procurement command bar ──────────────────── */
+  --color-navy-50: #eef4f9;
+  --color-navy-100: #d5e2ee;
+  --color-navy-200: #a7c0d6;
+  --color-navy-300: #6d8fae;
+  --color-navy-500: #2b567a;
+  --color-navy-700: #143a58;
+  --color-navy-800: #102c44;
+  --color-navy-900: #0b2033;
 
   /* ── Ink / surface ──────────────────────────────────────── */
   --color-ink-900: #0f172a;
+  --color-ink-800: #1e293b;
   --color-ink-700: #334155;
+  --color-ink-600: #475569;
   --color-ink-500: #64748b;
   --color-ink-400: #94a3b8;
+  --color-ink-300: #cbd5e1;
   --color-ink-200: #e2e8f0;
   --color-ink-100: #f1f5f9;
   --color-ink-50: #f8fafc;

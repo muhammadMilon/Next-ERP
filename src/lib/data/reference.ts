@@ -2,12 +2,11 @@
  *  records stay internally consistent across modules. */
 
 export const COMPANY = {
-  name: "Smart Global IT",
-  product: "Smart ERP",
-  director: "Mohammad Sayem",
-  mobile: "+8801711-772407",
-  address: "Chittagong South Kulshi, Bangladesh",
-  email: "admin@smartglobalit.net",
+  name: "Noor IT Solutions",
+  product: "Noor ERP",
+  suite: "BAY CPS",
+  tagline: "Simple, controlled, traceable",
+  email: "admin@nooritsolutions.com",
 } as const;
 
 export const UNITS = [
@@ -84,7 +83,7 @@ export const WAREHOUSES = [
 export const ZONES = ["A", "B", "C", "D"] as const;
 
 export const PEOPLE = [
-  { name: "Mohammad Sayem", role: "Super-Admin" },
+  { name: "System Administrator", role: "Super-Admin" },
   { name: "Farhana Akter", role: "Unit Finance" },
   { name: "Rafiqul Islam", role: "Unit Head" },
   { name: "Tanvir Hossain", role: "Central Procurement" },

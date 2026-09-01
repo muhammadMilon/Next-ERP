@@ -62,7 +62,7 @@ export function Navbar({
   const isDashboard = pathname === "/dashboard";
 
   const title = isDashboard ? "Command Center" : (loc?.leaf.label ?? "Workspace");
-  const subtitle = isDashboard ? "Dashboard" : loc ? `${loc.module.label} › ${loc.group.label}` : "Smart ERP";
+  const subtitle = isDashboard ? "Dashboard" : loc ? `${loc.module.label} › ${loc.group.label}` : COMPANY.product;
   const icon = isDashboard ? null : loc?.group.icon;
   const pinned = bookmarks.includes(pathname);
 
@@ -290,10 +290,10 @@ export function Navbar({
           trigger={() => (
             <span className="flex items-center gap-2 rounded-lg py-1 pl-1 pr-2 transition-colors hover:bg-ink-100">
               <span className="grid size-8 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-amber-500 text-[12px] font-bold text-white">
-                {initials(user?.name ?? "Mohammad Sayem")}
+                {initials(user?.name ?? "System Administrator")}
               </span>
               <span className="hidden text-left leading-tight sm:block">
-                <span className="block text-[12.5px] font-semibold text-ink-900">{user?.name ?? "Mohammad Sayem"}</span>
+                <span className="block text-[12.5px] font-semibold text-ink-900">{user?.name ?? "System Administrator"}</span>
                 <span className="block text-[10.5px] text-ink-400">{user?.role ?? "Super-Admin"}</span>
               </span>
             </span>
@@ -303,7 +303,7 @@ export function Navbar({
           {(close) => (
             <>
               <div className="px-3 py-3">
-                <p className="text-[13.5px] font-semibold text-ink-900">{user?.name ?? COMPANY.director}</p>
+                <p className="text-[13.5px] font-semibold text-ink-900">{user?.name ?? "System Administrator"}</p>
                 <p className="text-[12px] text-ink-500">{user?.email ?? COMPANY.email}</p>
               </div>
               <MenuDivider />
@@ -313,12 +313,8 @@ export function Navbar({
                   <dd className="font-semibold text-brand-600">{user?.role ?? "Super-Admin"}</dd>
                 </div>
                 <div className="flex justify-between py-1">
-                  <dt className="text-ink-500">Director</dt>
-                  <dd className="font-medium text-ink-800">{COMPANY.director}</dd>
-                </div>
-                <div className="flex justify-between py-1">
-                  <dt className="text-ink-500">Mobile</dt>
-                  <dd className="font-medium text-ink-800">{COMPANY.mobile}</dd>
+                  <dt className="text-ink-500">Workspace</dt>
+                  <dd className="font-medium text-ink-800">{COMPANY.name}</dd>
                 </div>
               </dl>
               <MenuDivider />

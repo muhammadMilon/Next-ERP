@@ -9,6 +9,7 @@ import {
   Boxes,
   Eye,
   EyeOff,
+  Layers,
   Lock,
   Mail,
   ShieldCheck,
@@ -19,11 +20,13 @@ import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Field";
 import { COMPANY } from "@/lib/data/reference";
 import { LEAF_COUNT } from "@/lib/nav/registry";
+import { CPS_SCREEN_COUNT } from "@/lib/cps/nav";
 import { useStore } from "@/store/app-store";
 import { cn } from "@/lib/utils/cn";
 
 /** Demo credentials — pre-filled so the workspace is one click away. */
 const DEMO = { email: COMPANY.email, password: "Admin@12345" };
+const ADMIN_NAME = "System Administrator";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -66,13 +69,7 @@ export default function LoginPage() {
         window.setTimeout(() => {
           dispatch({
             type: "signIn",
-            user: {
-              name: COMPANY.director,
-              email: DEMO.email,
-              role: "Super-Admin",
-              director: COMPANY.director,
-              mobile: COMPANY.mobile,
-            },
+            user: { name: ADMIN_NAME, email: DEMO.email, role: "Super-Admin" },
           });
           logActivity({ action: "signed-in", entity: "Session", ref: DEMO.email });
           resolve();
@@ -81,7 +78,7 @@ export default function LoginPage() {
       ),
       {
         loading: "Verifying your credentials…",
-        success: `Welcome back, ${COMPANY.director.split(" ")[0]}`,
+        success: "Welcome back, Administrator",
         error: "Sign-in failed",
       },
     ).finally(() => setBusy(false));
@@ -108,23 +105,23 @@ export default function LoginPage() {
             Enterprise Edition
           </p>
           <h1 className="text-[36px] font-bold leading-[1.12] tracking-tight text-ink-900">
-            Procurement and inventory,
+            Central procurement,
             <br />
             <span className="bg-gradient-to-r from-brand-600 to-amber-500 bg-clip-text text-transparent">
-              under one control tower.
+              simple, controlled, traceable.
             </span>
           </h1>
           <p className="mt-4 text-[14.5px] leading-relaxed text-ink-600">
-            From requisition to RFQ, TCO evaluation and supplier award — through receiving, GRN, incoming quality
-            and a clean three-way match before a single payment is released.
+            Unit PR → approval → central demand consolidation → supplier allocation → consolidated PO, alongside
+            the full Purchase and Inventory control towers.
           </p>
 
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {[
+              { icon: Layers, title: "Central Procurement (BAY CPS)", body: "PR → consolidation → allocation → PO" },
               { icon: ShoppingCart, title: "Purchase Management", body: "13 sub-modules from PR to payment control" },
               { icon: Boxes, title: "Inventory Management", body: "8 sub-modules from gate to stock ledger" },
-              { icon: ShieldCheck, title: "Approval & DOA", body: "Four-stage matrix with full audit trail" },
-              { icon: BadgeCheck, title: "Quality Gate", body: "MTR and IQC block what should not ship" },
+              { icon: ShieldCheck, title: "Controls & Audit", body: "Role-based access with a full audit trail" },
             ].map((f) => (
               <li key={f.title} className="flex gap-3 rounded-xl border border-white bg-white/70 p-3 backdrop-blur-sm">
                 <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600">
@@ -140,8 +137,7 @@ export default function LoginPage() {
         </div>
 
         <p className="relative text-[12px] text-ink-500">
-          {COMPANY.product} · <span className="font-semibold text-brand-600">{COMPANY.name}</span> · Director:{" "}
-          {COMPANY.director} · {COMPANY.mobile}
+          {COMPANY.product} · <span className="font-semibold text-brand-600">{COMPANY.name}</span> · {COMPANY.tagline}
         </p>
       </aside>
 
@@ -261,7 +257,7 @@ export default function LoginPage() {
             Don&apos;t have an account?{" "}
             <button
               type="button"
-              onClick={() => toast("Registration is handled by your Smart Global IT account manager", { icon: "📝" })}
+              onClick={() => toast(`Registration is handled by your ${COMPANY.name} account manager`, { icon: "📝" })}
               className="font-semibold text-brand-600 transition-colors hover:text-brand-700 hover:underline"
             >
               Register
@@ -269,7 +265,7 @@ export default function LoginPage() {
           </p>
 
           <p className="mt-8 text-center text-[11px] text-ink-400">
-            {LEAF_COUNT} screens · 2 modules · 21 sub-modules · frontend demo build
+            {LEAF_COUNT + CPS_SCREEN_COUNT} screens · 3 modules · frontend prototype build
           </p>
         </div>
       </main>

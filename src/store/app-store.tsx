@@ -16,8 +16,6 @@ export interface AuthUser {
   name: string;
   email: string;
   role: string;
-  director: string;
-  mobile: string;
 }
 
 export interface ActivityEntry {
@@ -242,7 +240,7 @@ function seedNotifications(): AppNotification[] {
 
 /* ── Persistence ──────────────────────────────────────────────────────────── */
 
-const STORAGE_KEY = "sgit-erp:v1";
+const STORAGE_KEY = "noor-erp:v1";
 
 interface Persisted {
   user: AuthUser | null;
