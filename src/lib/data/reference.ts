@@ -72,12 +72,12 @@ export const ITEMS = [
 ] as const;
 
 export const WAREHOUSES = [
-  { code: "WH-RM-01", name: "Raw Material Store", type: "Raw Material", location: "Kulshi, Chittagong" },
-  { code: "WH-TR-02", name: "Trims & Accessories Store", type: "Raw Material", location: "Kulshi, Chittagong" },
-  { code: "WH-CH-03", name: "Chemical Store", type: "Bonded", location: "Kalurghat, Chittagong" },
-  { code: "WH-FG-04", name: "Finished Goods Store", type: "Finished Goods", location: "Kulshi, Chittagong" },
-  { code: "WH-QR-05", name: "Quarantine Store", type: "Quarantine", location: "Kulshi, Chittagong" },
-  { code: "WH-SP-06", name: "Spares & Engineering", type: "Raw Material", location: "Kalurghat, Chittagong" },
+  { code: "WH-RM-01", name: "Raw Material Store", type: "Raw Material", location: "Main Site" },
+  { code: "WH-TR-02", name: "Trims & Accessories Store", type: "Raw Material", location: "Main Site" },
+  { code: "WH-CH-03", name: "Chemical Store", type: "Bonded", location: "Utility Site" },
+  { code: "WH-FG-04", name: "Finished Goods Store", type: "Finished Goods", location: "Main Site" },
+  { code: "WH-QR-05", name: "Quarantine Store", type: "Quarantine", location: "Main Site" },
+  { code: "WH-SP-06", name: "Spares & Engineering", type: "Raw Material", location: "Utility Site" },
 ] as const;
 
 export const ZONES = ["A", "B", "C", "D"] as const;

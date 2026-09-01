@@ -3,10 +3,11 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronRight, LayoutDashboard, Search, Star, X } from "lucide-react";
+import { ChevronRight, LayoutDashboard, Radar, Search, Star, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { NavIcon } from "./icons";
 import { DASHBOARD_HREF, LEAF_COUNT, MODULES, leafHref } from "@/lib/nav/registry";
+import { CPS_HOME } from "@/lib/cps/nav";
 import type { NavGroup, NavLeaf, NavModule } from "@/lib/nav/types";
 import { useStore } from "@/store/app-store";
 import { cn } from "@/lib/utils/cn";
@@ -49,6 +50,7 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
   const toggle = (key: string) => setOverrides((o) => ({ ...o, [key]: !isOpen(key) }));
 
   const dashboardActive = pathname === DASHBOARD_HREF;
+  const cpsActive = pathname.startsWith(CPS_HOME);
 
   return (
     <>
@@ -122,6 +124,30 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
             {!collapsed && <span>Dashboard</span>}
           </Link>
 
+          {/* Central Procurement System — its own shell, linked from the rail */}
+          <Link
+            href={CPS_HOME}
+            onClick={onCloseMobile}
+            title="Central Procurement System (BAY CPS)"
+            className={cn(
+              "mb-3 flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] font-medium transition-colors",
+              collapsed && "justify-center px-0",
+              cpsActive
+                ? "bg-navy-900 text-white"
+                : "border border-brand-200 bg-brand-50 text-brand-700 hover:bg-brand-100",
+            )}
+          >
+            <Radar className="size-4 shrink-0" aria-hidden />
+            {!collapsed && (
+              <>
+                <span className="min-w-0 flex-1 truncate">Central Procurement</span>
+                <span className="shrink-0 rounded bg-white/80 px-1 font-mono text-[9.5px] font-bold text-brand-700">
+                  CPS
+                </span>
+              </>
+            )}
+          </Link>
+
           {/* Bookmarks */}
           {!collapsed && !q && bookmarks.length > 0 && (
             <div className="mb-3">
@@ -161,7 +187,7 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
         {!collapsed && (
           <div className="border-t border-ink-100 px-4 py-2.5">
             <p className="text-[10.5px] leading-relaxed text-ink-400">
-              <span className="font-semibold text-ink-500">2 modules</span> · 21 sub-modules · {LEAF_COUNT} screens
+              <span className="font-semibold text-ink-500">3 modules</span> · Central Procurement · {LEAF_COUNT} ERP screens
             </p>
           </div>
         )}

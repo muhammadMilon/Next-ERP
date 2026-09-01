@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { CornerDownLeft, LayoutDashboard, Search } from "lucide-react";
 import { NavIcon } from "./icons";
 import { ALL_LEAVES, DASHBOARD_HREF } from "@/lib/nav/registry";
+import { CPS_HOME_ITEM, CPS_ITEMS } from "@/lib/cps/nav";
 import type { LeafLocation } from "@/lib/nav/types";
 import { cn } from "@/lib/utils/cn";
 
@@ -21,6 +22,17 @@ const DASHBOARD_HIT: Hit = {
   path: "Dashboard",
   icon: "LayoutDashboard",
 };
+
+/** The Central Procurement prototype lives outside the module registry. */
+const CPS_HITS: Hit[] = [CPS_HOME_ITEM, ...CPS_ITEMS].map((i) => ({
+  href: i.href,
+  label: i.title,
+  path: `BAY CPS › ${i.label}`,
+  icon: "Radar",
+}));
+
+const cpsMatches = (q: string) =>
+  CPS_HITS.filter((h) => `${h.label} ${h.path}`.toLowerCase().includes(q));
 
 /** Ranks an exact prefix above a word-start above a loose substring. */
 function score(leaf: LeafLocation, q: string): number {
@@ -54,6 +66,7 @@ function PaletteDialog({ onClose }: { onClose: () => void }) {
     if (!q) {
       return [
         DASHBOARD_HIT,
+        ...CPS_HITS.slice(0, 4),
         ...ALL_LEAVES.filter((l) => l.leaf.kind === "dashboard" || l.leaf.kind === "form")
           .slice(0, 9)
           .map((l) => ({
@@ -71,6 +84,7 @@ function PaletteDialog({ onClose }: { onClose: () => void }) {
     const dash = "command center dashboard".includes(q) ? [DASHBOARD_HIT] : [];
     return [
       ...dash,
+      ...cpsMatches(q),
       ...scored.map(({ l }) => ({
         href: l.href,
         label: l.leaf.label,

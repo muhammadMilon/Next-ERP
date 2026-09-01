@@ -14,6 +14,7 @@ import {
   Microscope,
   PackageOpen,
   Plus,
+  Radar,
   ShieldAlert,
   ShoppingCart,
   Sparkles,
@@ -30,6 +31,7 @@ import { AreaTrend, DonutSplit, GroupedBars, HBar, ParetoBars, StackedBars } fro
 import { groupSum, groupedSeries, paretoSeries, stackedSeries, timeSeries } from "@/lib/data/aggregate";
 import { MODULES } from "@/lib/nav/registry";
 import { COMPANY } from "@/lib/data/reference";
+import { CPS_HOME } from "@/lib/cps/nav";
 import { useStore } from "@/store/app-store";
 import { currency, dateShort, num, relative } from "@/lib/utils/format";
 import { cn } from "@/lib/utils/cn";
@@ -160,7 +162,7 @@ export default function DashboardPage() {
               Command Center
             </p>
             <h1 className="text-[24px] font-bold leading-tight tracking-tight text-ink-900">
-              {greeting}, {user?.name?.split(" ")[0] ?? "Sayem"}
+              {greeting}, {user?.name?.split(" ")[0] ?? "Administrator"}
             </h1>
             <p className="mt-1 text-[13.5px] text-ink-600">
               {dateShort(today.toISOString())} · {COMPANY.product} at {COMPANY.name} ·{" "}
@@ -198,6 +200,26 @@ export default function DashboardPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Central Procurement System ───────────────────────────────────── */}
+      <Link
+        href={CPS_HOME}
+        className="group mb-4 flex flex-wrap items-center gap-4 rounded-2xl bg-navy-900 px-5 py-4 text-white transition-all hover:-translate-y-0.5 hover:shadow-pop"
+      >
+        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-white/10 text-brand-200">
+          <Radar className="size-5" aria-hidden />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-[15px] font-bold">Central Procurement System — {COMPANY.suite}</span>
+          <span className="block text-[12.5px] text-navy-200">
+            Unit PR → Approval → Central Consolidation → Supplier Allocation → Consolidated PO
+          </span>
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3 py-1.5 text-[12.5px] font-semibold text-white transition-colors group-hover:bg-brand-400">
+          Open BAY CPS
+          <ArrowRight className="size-3.5" aria-hidden />
+        </span>
+      </Link>
 
       {/* ── KPI row ──────────────────────────────────────────────────────── */}
       <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">

@@ -1,5 +1,5 @@
 {
-  "name": "next-erp",
+  "name": "noor-erp",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -31,5 +31,5 @@
   "engines": {
     "node": ">=20.9.0"
   },
-  "description": "Smart ERP — Purchase and Inventory management frontend demo by Smart Global IT"
+  "description": "Noor ERP — Central Procurement, Purchase and Inventory frontend prototype by Noor IT Solutions"
 }

@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
       },
       {
         // The brand mark never changes — let the CDN hold on to it.
-        source: "/company-logo.jpeg",
+        source: "/brand-mark.svg",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
     ];
