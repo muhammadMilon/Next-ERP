@@ -42,7 +42,7 @@ export function DemandConsolidation() {
     useCps();
 
   const [dcNo, setDcNo] = useState<string>(() => state.consolidations.find((c) => c.status === "Draft")?.dcNo ?? "");
-  const [period, setPeriod] = useState(THIS_MONTH);
+  const [pickedPeriod, setPickedPeriod] = useState<string | null>(null);
   const [category, setCategory] = useState<ItemCategory | "All">("All");
   const [activeUic, setActiveUic] = useState<string | null>(null);
   const [drillUic, setDrillUic] = useState<string | null>(null);
@@ -50,6 +50,19 @@ export function DemandConsolidation() {
 
   const consolidation = state.consolidations.find((c) => c.dcNo === dcNo) ?? null;
   const editable = Boolean(consolidation && consolidation.status === "Draft" && can("consolidateDemand"));
+
+  /** Months that still carry approved demand nobody has consolidated, newest first. */
+  const openMonths = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const pr of openApprovedPrs(state, category)) {
+      const month = pr.prDate.slice(0, 7);
+      counts.set(month, (counts.get(month) ?? 0) + 1);
+    }
+    return [...counts.entries()].sort((a, b) => (a[0] < b[0] ? 1 : -1));
+  }, [state, category]);
+
+  /** Land on the month that actually has work waiting rather than an empty one. */
+  const period = pickedPeriod ?? openMonths[0]?.[0] ?? THIS_MONTH;
 
   /** What is available to pull in right now, for the chosen period and category. */
   const openPrs = useMemo(() => openApprovedPrs(state, category, period), [state, category, period]);
@@ -82,7 +95,7 @@ export function DemandConsolidation() {
     patchLine(line.uic, [
       ...line.allocations,
       {
-        id: `${line.uic}-${supplier.code}-${Date.now().toString(36)}`,
+        id: `${line.uic}-${supplier.code}`,
         supplierCode: supplier.code,
         qty: remaining,
         unitPrice: itemByUic(line.uic)?.indicativeRate ?? 0,
@@ -161,7 +174,7 @@ export function DemandConsolidation() {
           {consolidation ? (
             <Input value={consolidation.period} readOnly disabled />
           ) : (
-            <Input type="month" value={period} onChange={(e) => setPeriod(e.target.value)} />
+            <Input type="month" value={period} onChange={(e) => setPickedPeriod(e.target.value)} />
           )}
         </LField>
         <LField label="Category">
@@ -194,6 +207,21 @@ export function DemandConsolidation() {
           >
             Unprocessed Approved Demand — {monthName(period)}
           </SectionHeading>
+          {openMonths.length > 1 && (
+            <div className="mb-3 flex flex-wrap items-center gap-1.5">
+              <span className="text-[12px] text-ink-500">Months with open demand:</span>
+              {openMonths.map(([month, count]) => (
+                <Button
+                  key={month}
+                  size="xs"
+                  variant={month === period ? "primary" : "secondary"}
+                  onClick={() => setPickedPeriod(month)}
+                >
+                  {monthName(month)} · {count} PR
+                </Button>
+              ))}
+            </div>
+          )}
           <DataGrid
             columns={[
               { key: "uic", label: "Item / UIC", mono: true, width: "150px" },
@@ -496,6 +524,7 @@ export function DemandConsolidation() {
         ]}
         rows={state.consolidations}
         rowKey={(c) => c.id}
+        pageSize={10}
         activeKey={consolidation?.id}
         onRowClick={(c) => {
           setDcNo(c.dcNo);

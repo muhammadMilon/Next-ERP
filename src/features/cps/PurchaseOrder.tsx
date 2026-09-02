@@ -314,6 +314,7 @@ export function PurchaseOrder() {
         ]}
         rows={state.pos}
         rowKey={(p) => p.id}
+        pageSize={10}
         activeKey={po?.id}
         onRowClick={(p) => {
           setDcNo(p.dcNo);

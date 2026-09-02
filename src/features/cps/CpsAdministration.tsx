@@ -119,6 +119,7 @@ export function CpsAdministration() {
           { key: "detail", label: "Detail", render: (a: CpsAudit) => a.detail ?? "—" },
         ]}
         rows={state.audit}
+        pageSize={12}
         rowKey={(a) => a.id}
         dense
         empty="No action recorded in this session yet — every save, decision and release lands here."

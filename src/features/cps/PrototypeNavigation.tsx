@@ -16,6 +16,15 @@ export function PrototypeNavigation() {
       <ScreenTitle
         title="Prototype Navigation"
         hint="Phase 1 functions translated into practical web ERP screens — every screen below is fully working."
+        actions={
+          <Link
+            href="/cover"
+            className="focus-brand inline-flex h-9 items-center gap-1.5 rounded-lg bg-ink-50 px-3 text-[13px] font-medium text-ink-700 ring-1 ring-inset ring-ink-200 transition-colors hover:bg-ink-100 hover:text-ink-900"
+          >
+            Phase 1 cover
+            <ArrowRight className="size-3.5" aria-hidden />
+          </Link>
+        }
       />
 
       <p className="mb-3 text-[12.5px] font-semibold uppercase tracking-[0.1em] text-brand-700">Master Data</p>

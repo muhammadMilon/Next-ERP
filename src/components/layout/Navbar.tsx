@@ -9,6 +9,7 @@ import {
   Bell,
   Check,
   CheckCheck,
+  ChevronDown,
   Globe,
   LayoutDashboard,
   LogOut,
@@ -296,6 +297,7 @@ export function Navbar({
                 <span className="block text-[12.5px] font-semibold text-ink-900">{user?.name ?? "System Administrator"}</span>
                 <span className="block text-[10.5px] text-ink-400">{user?.role ?? "Super-Admin"}</span>
               </span>
+              <ChevronDown className="hidden size-3.5 shrink-0 text-ink-400 sm:block" aria-hidden />
             </span>
           )}
           panelClassName="w-[280px]"

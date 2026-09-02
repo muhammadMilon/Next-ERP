@@ -450,6 +450,7 @@ export function PurchaseRequisition() {
         ]}
         rows={register}
         rowKey={(pr) => pr.id}
+        pageSize={10}
         activeKey={draft.id}
         onRowClick={(pr) => {
           setDraft({ ...pr, lines: pr.lines.map((l) => ({ ...l })) });

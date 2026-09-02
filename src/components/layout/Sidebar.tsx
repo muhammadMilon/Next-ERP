@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronRight, LayoutDashboard, Radar, Search, Star, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
-import { NavIcon } from "./icons";
+import { LeafIcon, NavIcon } from "./icons";
 import { DASHBOARD_HREF, LEAF_COUNT, MODULES, leafHref } from "@/lib/nav/registry";
 import { CPS_HOME } from "@/lib/cps/nav";
 import type { NavGroup, NavLeaf, NavModule } from "@/lib/nav/types";
@@ -107,6 +107,8 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
         )}
 
         <nav className="flex-1 overflow-y-auto overflow-x-hidden px-2 py-3">
+          {!collapsed && <RailLabel>Overview</RailLabel>}
+
           {/* Dashboard */}
           <Link
             href={DASHBOARD_HREF}
@@ -151,7 +153,7 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
           {/* Bookmarks */}
           {!collapsed && !q && bookmarks.length > 0 && (
             <div className="mb-3">
-              <p className="px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-ink-400">Pinned</p>
+              <RailLabel>Pinned</RailLabel>
               {bookmarks.slice(0, 5).map((href) => (
                 <Link
                   key={href}
@@ -185,14 +187,34 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
         </nav>
 
         {!collapsed && (
-          <div className="border-t border-ink-100 px-4 py-2.5">
-            <p className="text-[10.5px] leading-relaxed text-ink-400">
-              <span className="font-semibold text-ink-500">3 modules</span> · Central Procurement · {LEAF_COUNT} ERP screens
-            </p>
+          <div className="border-t border-ink-100 p-3">
+            <div className="rounded-xl border border-ink-200 bg-ink-50/70 px-3 py-2.5">
+              <p className="flex items-center justify-between gap-2">
+                <span className="text-[11.5px] font-semibold text-ink-700">System Status</span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-1.5 py-0.5 text-[9.5px] font-bold uppercase tracking-[0.08em] text-emerald-600">
+                  <span className="size-1.5 animate-pulse rounded-full bg-emerald-500" aria-hidden />
+                  Live
+                </span>
+              </p>
+              <p className="mt-1 text-[10.5px] text-ink-500">All systems operational</p>
+              <p className="mt-0.5 text-[10.5px] text-ink-400">
+                3 modules · {LEAF_COUNT} ERP screens · demo data
+              </p>
+            </div>
           </div>
         )}
       </aside>
     </>
+  );
+}
+
+/** The uppercase rail caption that separates one part of the tree from the next. */
+function RailLabel({ code, children }: { code?: string; children: ReactNode }) {
+  return (
+    <div className="flex items-center gap-2 px-2.5 pb-1 pt-3 first:pt-1">
+      {code && <span className="font-mono text-[10px] font-bold text-brand-400">{code}</span>}
+      <span className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-ink-400">{children}</span>
+    </div>
   );
 }
 
@@ -222,10 +244,7 @@ function ModuleBlock({
           </span>
         </div>
       ) : (
-        <div className="flex items-center gap-2 px-2.5 pb-1 pt-3">
-          <span className="font-mono text-[10px] font-bold text-brand-400">{module.code}</span>
-          <span className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-ink-400">{module.label}</span>
-        </div>
+        <RailLabel code={module.code}>{module.label}</RailLabel>
       )}
 
       {module.groups.map((group) => (
@@ -311,8 +330,9 @@ function GroupBlock({
           {sections.map((section, si) => (
             <div key={si}>
               {section.caption && (
-                <p className="px-2 pb-0.5 pt-2 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-ink-400">
-                  {section.caption}
+                <p className="flex items-center gap-1.5 px-2 pb-0.5 pt-2 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-ink-400">
+                  <span className="truncate">{section.caption}</span>
+                  <span className="shrink-0 font-mono tabular-nums text-ink-300">{section.leaves.length}</span>
                 </p>
               )}
               {section.leaves.map((leaf) => {
@@ -331,6 +351,10 @@ function GroupBlock({
                     )}
                   >
                     {active && <span className="absolute -left-[9px] top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-full bg-brand-500" aria-hidden />}
+                    <LeafIcon
+                      kind={leaf.kind}
+                      className={cn("size-3.5 shrink-0", active ? "text-brand-500" : "text-ink-400")}
+                    />
                     <span className="truncate">{leaf.label}</span>
                   </Link>
                 );

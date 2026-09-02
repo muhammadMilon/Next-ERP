@@ -161,6 +161,7 @@ export function PrApproval() {
         ]}
         rows={queue}
         rowKey={(p) => p.id}
+        pageSize={10}
         activeKey={pr?.id}
         onRowClick={(p) => {
           setSelected(p.prNo);

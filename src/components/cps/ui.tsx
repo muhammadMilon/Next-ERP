@@ -1,7 +1,7 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { Lock } from "lucide-react";
+import { useState, type ReactNode } from "react";
+import { ChevronLeft, ChevronRight, Lock } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 
 /* ── Numbers ──────────────────────────────────────────────────────────────── */
@@ -150,6 +150,7 @@ export function DataGrid<T>({
   onRowClick,
   activeKey,
   dense,
+  pageSize,
 }: {
   columns: GridColumn<T>[];
   rows: T[];
@@ -158,66 +159,107 @@ export function DataGrid<T>({
   onRowClick?: (row: T) => void;
   activeKey?: string;
   dense?: boolean;
+  /** Page the register instead of printing every row down the screen. */
+  pageSize?: number;
 }) {
+  const [page, setPage] = useState(0);
+  const pageCount = pageSize ? Math.max(1, Math.ceil(rows.length / pageSize)) : 1;
+  /** Filters shrink the register under the reader's feet — clamp, never crash. */
+  const current = Math.min(page, pageCount - 1);
+  const from = pageSize ? current * pageSize : 0;
+  const visible = pageSize ? rows.slice(from, from + pageSize) : rows;
+
   return (
-    <div className="overflow-x-auto rounded-lg border border-ink-200">
-      <table className="w-full min-w-[640px] border-collapse text-[12.5px]">
-        <thead>
-          <tr className="bg-navy-800 text-white">
-            {columns.map((c) => (
-              <th
-                key={c.key}
-                style={c.width ? { width: c.width } : undefined}
-                className={cn(
-                  "whitespace-nowrap px-3 py-2.5 text-[11.5px] font-semibold uppercase tracking-[0.04em]",
-                  c.align === "right" ? "text-right" : c.align === "center" ? "text-center" : "text-left",
-                )}
-              >
-                {c.label}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.length === 0 && (
-            <tr>
-              <td colSpan={columns.length} className="px-3 py-8 text-center text-[12.5px] text-ink-400">
-                {empty}
-              </td>
+    <>
+      <div className="overflow-x-auto rounded-lg border border-ink-200">
+        <table className="w-full min-w-[640px] border-collapse text-[12.5px]">
+          <thead>
+            <tr className="bg-navy-800 text-white">
+              {columns.map((c) => (
+                <th
+                  key={c.key}
+                  style={c.width ? { width: c.width } : undefined}
+                  className={cn(
+                    "whitespace-nowrap px-3 py-2.5 text-[11.5px] font-semibold uppercase tracking-[0.04em]",
+                    c.align === "right" ? "text-right" : c.align === "center" ? "text-center" : "text-left",
+                  )}
+                >
+                  {c.label}
+                </th>
+              ))}
             </tr>
-          )}
-          {rows.map((row, i) => {
-            const key = rowKey(row, i);
-            return (
-              <tr
-                key={key}
-                onClick={onRowClick ? () => onRowClick(row) : undefined}
-                className={cn(
-                  "border-t border-ink-100 transition-colors",
-                  i % 2 === 1 && "bg-ink-50/60",
-                  onRowClick && "cursor-pointer hover:bg-brand-50",
-                  activeKey === key && "bg-brand-50 ring-1 ring-inset ring-brand-200",
-                )}
-              >
-                {columns.map((c) => (
-                  <td
-                    key={c.key}
-                    className={cn(
-                      dense ? "px-3 py-1.5" : "px-3 py-2.5",
-                      "align-middle text-ink-700",
-                      c.mono && "font-mono text-[12px] font-medium text-ink-900",
-                      c.align === "right" ? "text-right tabular-nums" : c.align === "center" ? "text-center" : "text-left",
-                    )}
-                  >
-                    {c.render ? c.render(row, i) : String((row as Record<string, unknown>)[c.key] ?? "—")}
-                  </td>
-                ))}
+          </thead>
+          <tbody>
+            {rows.length === 0 && (
+              <tr>
+                <td colSpan={columns.length} className="px-3 py-8 text-center text-[12.5px] text-ink-400">
+                  {empty}
+                </td>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+            )}
+            {visible.map((row, i) => {
+              const key = rowKey(row, from + i);
+              return (
+                <tr
+                  key={key}
+                  onClick={onRowClick ? () => onRowClick(row) : undefined}
+                  className={cn(
+                    "border-t border-ink-100 transition-colors",
+                    i % 2 === 1 && "bg-ink-50/60",
+                    onRowClick && "cursor-pointer hover:bg-brand-50",
+                    activeKey === key && "bg-brand-50 ring-1 ring-inset ring-brand-200",
+                  )}
+                >
+                  {columns.map((c) => (
+                    <td
+                      key={c.key}
+                      className={cn(
+                        dense ? "px-3 py-1.5" : "px-3 py-2.5",
+                        "align-middle text-ink-700",
+                        c.mono && "font-mono text-[12px] font-medium text-ink-900",
+                        c.align === "right" ? "text-right tabular-nums" : c.align === "center" ? "text-center" : "text-left",
+                      )}
+                    >
+                      {c.render ? c.render(row, from + i) : String((row as Record<string, unknown>)[c.key] ?? "—")}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      {pageSize && rows.length > pageSize && (
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-[12px] text-ink-500">
+          <span>
+            Showing <span className="font-medium text-ink-700">{from + 1}–{Math.min(from + pageSize, rows.length)}</span>{" "}
+            of <span className="font-medium text-ink-700">{rows.length}</span>
+          </span>
+          <span className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => setPage(Math.max(0, current - 1))}
+              disabled={current === 0}
+              className="focus-brand inline-flex h-7 items-center gap-1 rounded-md border border-ink-200 px-2 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-900 disabled:opacity-40 disabled:hover:bg-transparent"
+            >
+              <ChevronLeft className="size-3.5" aria-hidden /> Prev
+            </button>
+            <span className="px-1 tabular-nums">
+              Page {current + 1} / {pageCount}
+            </span>
+            <button
+              type="button"
+              onClick={() => setPage(Math.min(pageCount - 1, current + 1))}
+              disabled={current >= pageCount - 1}
+              className="focus-brand inline-flex h-7 items-center gap-1 rounded-md border border-ink-200 px-2 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-900 disabled:opacity-40 disabled:hover:bg-transparent"
+            >
+              Next <ChevronRight className="size-3.5" aria-hidden />
+            </button>
+          </span>
+        </div>
+      )}
+    </>
   );
 }
 
