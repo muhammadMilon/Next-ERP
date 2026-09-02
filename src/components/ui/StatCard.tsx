@@ -29,12 +29,12 @@ export function StatCard({ label, value, unit, hint, delta, goodWhenUp = true, i
   const positive = flat ? null : up === goodWhenUp;
 
   return (
-    <article className="group relative overflow-hidden rounded-xl border border-ink-200/80 bg-white p-4 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-pop">
-      <span className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-brand-400 to-amber-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+    <article className="group relative overflow-hidden rounded-xl border border-ink-200/80 bg-surface p-4 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-pop">
+      <span className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
       <div className="flex items-start justify-between gap-3">
         <p className="text-[12px] font-medium uppercase tracking-[0.06em] text-ink-500">{label}</p>
         {icon && (
-          <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-500 transition-colors group-hover:bg-brand-100">
+          <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-brand-500/15 text-brand-600 transition-colors group-hover:bg-brand-500/25">
             {icon}
           </span>
         )}
@@ -80,7 +80,7 @@ function Sparkline({ points, positive }: { points: number[]; positive: boolean }
     .join(" ");
   return (
     <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} className="shrink-0 overflow-visible" aria-hidden>
-      <path d={d} fill="none" stroke={positive ? "#1baf7a" : "#e34948"} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={d} fill="none" stroke={positive ? "#38c98a" : "#f0575c"} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

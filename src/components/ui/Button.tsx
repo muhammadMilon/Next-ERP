@@ -15,16 +15,18 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconRight?: React.ReactNode;
 }
 
+/* Filled variants carry white type, so they hold a saturated mid-tone rather
+   than the light end of the ink-authored ramps. */
 const VARIANTS: Record<Variant, string> = {
   primary:
-    "bg-gradient-to-b from-brand-500 to-brand-600 text-white shadow-sm hover:from-brand-400 hover:to-brand-500 active:from-brand-600 active:to-brand-700 disabled:from-brand-300 disabled:to-brand-300",
+    "bg-brand-500 text-white shadow-sm hover:bg-[#7377f5] active:bg-[#5457dd] disabled:bg-brand-300 disabled:text-ink-500",
   secondary:
-    "bg-white text-ink-700 ring-1 ring-inset ring-ink-200 hover:bg-ink-50 hover:text-ink-900 active:bg-ink-100",
+    "bg-ink-50 text-ink-700 ring-1 ring-inset ring-ink-200 hover:bg-ink-100 hover:text-ink-900 active:bg-ink-200",
   outline:
     "bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200 hover:bg-brand-100 active:bg-brand-200",
   ghost: "text-ink-500 hover:bg-ink-100 hover:text-ink-900 active:bg-ink-200",
   subtle: "bg-ink-100 text-ink-700 hover:bg-ink-200 active:bg-ink-200",
-  danger: "bg-red-600 text-white shadow-sm hover:bg-red-500 active:bg-red-700",
+  danger: "bg-[#cf2f3a] text-white shadow-sm hover:bg-[#e0404b] active:bg-[#b32731]",
 };
 
 const SIZES: Record<Size, string> = {

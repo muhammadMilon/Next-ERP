@@ -30,7 +30,7 @@ export function Tabs({
             onClick={() => onChange(t.key)}
             className={cn(
               "focus-brand inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[12.5px] font-medium transition-all duration-150",
-              active ? "bg-white text-ink-900 shadow-sm" : "text-ink-500 hover:text-ink-800",
+              active ? "bg-brand-500/25 text-ink-900 shadow-sm" : "text-ink-500 hover:text-ink-800",
             )}
           >
             {t.label}

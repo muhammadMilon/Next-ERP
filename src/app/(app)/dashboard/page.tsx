@@ -153,8 +153,8 @@ export default function DashboardPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative mb-4 overflow-hidden rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 via-white to-amber-50 p-5">
-        <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-brand-200/30 blur-3xl" aria-hidden />
+      <section className="relative mb-4 overflow-hidden rounded-2xl border border-brand-200/60 bg-gradient-to-br from-brand-50 via-surface to-surface p-5">
+        <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-brand-500/20 blur-3xl" aria-hidden />
         <div className="relative flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="mb-1 flex items-center gap-1.5 text-[11.5px] font-semibold uppercase tracking-[0.14em] text-brand-600">
@@ -175,7 +175,7 @@ export default function DashboardPage() {
               <Link
                 key={a.href}
                 href={a.href}
-                className="focus-brand inline-flex h-9 items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-3 text-[12.5px] font-medium text-ink-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:text-brand-700"
+                className="focus-brand inline-flex h-9 items-center gap-1.5 rounded-lg border border-ink-200 bg-surface px-3 text-[12.5px] font-medium text-ink-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:text-brand-700"
               >
                 <a.icon className="size-3.5 text-brand-500" aria-hidden />
                 {a.label}
@@ -206,7 +206,7 @@ export default function DashboardPage() {
         href={CPS_HOME}
         className="group mb-4 flex flex-wrap items-center gap-4 rounded-2xl bg-navy-900 px-5 py-4 text-white transition-all hover:-translate-y-0.5 hover:shadow-pop"
       >
-        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-white/10 text-brand-200">
+        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-white/10 text-brand-700">
           <Radar className="size-5" aria-hidden />
         </span>
         <span className="min-w-0 flex-1">
@@ -318,8 +318,8 @@ export default function DashboardPage() {
           const screens = m.groups.reduce((s, g) => s + g.leaves.length, 0);
           return (
             <Card key={m.slug} className="overflow-hidden">
-              <div className="flex items-start gap-3.5 border-b border-ink-100 bg-gradient-to-r from-brand-50/60 to-transparent p-4">
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-amber-500 text-white shadow-sm">
+              <div className="flex items-start gap-3.5 border-b border-ink-100 bg-gradient-to-r from-brand-50/70 to-transparent p-4">
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-500 text-white shadow-sm">
                   <meta.icon className="size-5" aria-hidden />
                 </span>
                 <div className="min-w-0 flex-1">
@@ -331,7 +331,7 @@ export default function DashboardPage() {
                 </div>
                 <Link
                   href={meta.href}
-                  className="focus-brand inline-flex h-8 shrink-0 items-center gap-1 rounded-lg bg-white px-2.5 text-[12.5px] font-medium text-brand-700 ring-1 ring-brand-200 transition-colors hover:bg-brand-50"
+                  className="focus-brand inline-flex h-8 shrink-0 items-center gap-1 rounded-lg bg-brand-50 px-2.5 text-[12.5px] font-medium text-brand-700 ring-1 ring-brand-200 transition-colors hover:bg-brand-100"
                 >
                   Open <ArrowRight className="size-3.5" />
                 </Link>
@@ -453,7 +453,7 @@ export default function DashboardPage() {
           { label: "Lots inspected", value: iqc.length, sub: `${iqc.filter((i) => i.decision === "Hold").length} currently on hold` },
           { label: "Avg. PR→PO cycle", value: Math.round(kpis.cycle), sub: "days, across all units" },
         ].map((s) => (
-          <div key={s.label} className="rounded-xl border border-ink-200/80 bg-white p-3.5 shadow-card">
+          <div key={s.label} className="rounded-xl border border-ink-200/80 bg-surface p-3.5 shadow-card">
             <p className="text-[11.5px] uppercase tracking-[0.06em] text-ink-500">{s.label}</p>
             <p className="mt-1 font-mono text-[20px] font-semibold tabular-nums text-ink-900">{num(s.value)}</p>
             <p className="mt-0.5 text-[11.5px] text-ink-400">{s.sub}</p>
@@ -461,7 +461,7 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-ink-200 bg-white px-4 py-3">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-ink-200 bg-surface px-4 py-3">
         <p className="text-[12.5px] text-ink-500">
           Reconciliation health:{" "}
           <StatusPill value={recon.filter((r) => r.status === "Matched").length > recon.length / 2 ? "Matched" : "Variance"} />

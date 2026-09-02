@@ -195,13 +195,13 @@ export function CompanyUsers() {
                 "focus-brand flex items-center gap-2.5 rounded-lg border px-4 py-3 text-left text-[13px] font-medium transition-colors",
                 on
                   ? "border-brand-300 bg-brand-50 text-brand-800"
-                  : "border-ink-200 bg-white text-ink-600 hover:border-ink-300",
+                  : "border-ink-200 bg-surface text-ink-600 hover:border-ink-300",
               )}
             >
               <span
                 className={cn(
                   "grid size-4 shrink-0 place-items-center rounded border text-[10px] font-bold text-white",
-                  on ? "border-brand-600 bg-brand-600" : "border-ink-300 bg-white",
+                  on ? "border-brand-500 bg-brand-500" : "border-ink-300 bg-ink-50",
                 )}
                 aria-hidden
               >

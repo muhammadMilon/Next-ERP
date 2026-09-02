@@ -5,7 +5,7 @@ export function Card({ className, children }: { className?: string; children: Re
   return (
     <section
       className={cn(
-        "rounded-xl border border-ink-200/80 bg-white shadow-card transition-shadow duration-200 hover:border-ink-200",
+        "rounded-xl border border-ink-200/80 bg-surface shadow-card transition-shadow duration-200 hover:border-ink-200",
         className,
       )}
     >
@@ -30,7 +30,7 @@ export function CardHeader({
   return (
     <header className={cn("flex items-start justify-between gap-4 border-b border-ink-100 px-4 py-3", className)}>
       <div className="flex min-w-0 items-start gap-2.5">
-        {icon && <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600">{icon}</span>}
+        {icon && <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-lg bg-brand-500/15 text-brand-600">{icon}</span>}
         <div className="min-w-0">
           <h3 className="truncate text-[14px] font-semibold tracking-tight text-ink-900">{title}</h3>
           {hint && <p className="mt-0.5 line-clamp-2 text-[12px] leading-relaxed text-ink-500">{hint}</p>}

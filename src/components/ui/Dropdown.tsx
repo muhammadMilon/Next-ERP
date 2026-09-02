@@ -47,7 +47,7 @@ export function Dropdown({
       {open && (
         <div
           className={cn(
-            "animate-slide-down absolute z-40 mt-2 min-w-[200px] overflow-hidden rounded-xl border border-ink-200 bg-white py-1 shadow-pop",
+            "animate-slide-down absolute z-40 mt-2 min-w-[200px] overflow-hidden rounded-xl border border-ink-200 bg-surface py-1 shadow-pop",
             align === "right" ? "right-0" : "left-0",
             panelClassName,
           )}

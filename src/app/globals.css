@@ -1,67 +1,122 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Noor ERP runs a single, committed dark theme. Every palette below is
+   authored for the dark canvas, including the Tailwind defaults the product
+   leans on for status tints — so a `bg-red-50 text-red-700` badge reads as a
+   deep red wash with a light red label rather than a bright card on ink.
+   ───────────────────────────────────────────────────────────────────────── */
+
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  /* ── Brand: white + teal (Noor IT Solutions) ────────────── */
-  --color-brand-50: #f0fdfa;
-  --color-brand-100: #ccfbf1;
-  --color-brand-200: #99f6e4;
-  --color-brand-300: #5eead4;
-  --color-brand-400: #2dd4bf;
-  --color-brand-500: #14b8a6;
-  --color-brand-600: #0d9488;
-  --color-brand-700: #0f766e;
-  --color-brand-800: #115e59;
-  --color-brand-900: #134e4a;
+  /* ── Surfaces ───────────────────────────────────────────────
+     canvas  — the page behind everything
+     surface — cards, the navbar, dropdown panels
+     panel   — the sidebar / command rail                        */
+  --color-canvas: #08090d;
+  --color-surface: #101219;
+  --color-panel: #0b0d13;
+
+  /* ── Brand: indigo on ink ───────────────────────────────────
+     The ramp runs dark → light so `bg-brand-50 text-brand-700`
+     stays a tinted chip with a legible label.                   */
+  --color-brand-50: #161a30;
+  --color-brand-100: #1d2340;
+  --color-brand-200: #2c3462;
+  --color-brand-300: #3f4a89;
+  --color-brand-400: #7b85f7;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #8f97ff;
+  --color-brand-700: #aab1ff;
+  --color-brand-800: #c8ccff;
+  --color-brand-900: #e4e6ff;
 
   /* ── Navy: the procurement command bar ──────────────────── */
-  --color-navy-50: #eef4f9;
-  --color-navy-100: #d5e2ee;
-  --color-navy-200: #a7c0d6;
-  --color-navy-300: #6d8fae;
-  --color-navy-500: #2b567a;
-  --color-navy-700: #143a58;
-  --color-navy-800: #102c44;
-  --color-navy-900: #0b2033;
+  --color-navy-50: #eef1f6;
+  --color-navy-100: #ced4e2;
+  --color-navy-200: #98a2b8;
+  --color-navy-300: #6b7790;
+  --color-navy-500: #4b556b;
+  --color-navy-700: #1f2430;
+  --color-navy-800: #161a22;
+  --color-navy-900: #0b0d13;
 
-  /* ── Ink / surface ──────────────────────────────────────── */
-  --color-ink-900: #0f172a;
-  --color-ink-800: #1e293b;
-  --color-ink-700: #334155;
-  --color-ink-600: #475569;
-  --color-ink-500: #64748b;
-  --color-ink-400: #94a3b8;
-  --color-ink-300: #cbd5e1;
-  --color-ink-200: #e2e8f0;
-  --color-ink-100: #f1f5f9;
-  --color-ink-50: #f8fafc;
+  /* ── Ink: neutrals, dark → light ────────────────────────────
+     50/100 are raised surfaces (table heads, zebra rows, hover),
+     200/300 are borders, 400+ is type.                          */
+  --color-ink-50: #171a21;
+  --color-ink-100: #1d212a;
+  --color-ink-200: #272c37;
+  --color-ink-300: #39404e;
+  --color-ink-400: #7b8496;
+  --color-ink-500: #98a2b3;
+  --color-ink-600: #b6bdc9;
+  --color-ink-700: #d0d6e0;
+  --color-ink-800: #e6eaf0;
+  --color-ink-900: #f5f7fa;
 
-  /* ── Categorical series (validated, fixed order) ────────── */
-  --color-series-1: #eb6834;
-  --color-series-2: #2a78d6;
-  --color-series-3: #1baf7a;
-  --color-series-4: #eda100;
-  --color-series-5: #e87ba4;
-  --color-series-6: #008300;
-  --color-series-7: #4a3aa7;
-  --color-series-8: #e34948;
+  /* ── Categorical series (fixed order, tuned for the dark plot) ── */
+  --color-series-1: #4d8df6;
+  --color-series-2: #f9834f;
+  --color-series-3: #38c98a;
+  --color-series-4: #f0b429;
+  --color-series-5: #ef7fae;
+  --color-series-6: #2fbfbf;
+  --color-series-7: #9b8afb;
+  --color-series-8: #f0575c;
 
   /* ── Status ─────────────────────────────────────────────── */
-  --color-good: #17805b;
-  --color-warn: #b06a00;
-  --color-serious: #c2410c;
-  --color-critical: #b91c1c;
+  --color-good: #2fbe83;
+  --color-warn: #e0a13a;
+  --color-serious: #f0803c;
+  --color-critical: #f0575c;
 
-  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.06);
-  --shadow-pop: 0 10px 30px -10px rgb(15 23 42 / 0.20), 0 2px 8px rgb(15 23 42 / 0.06);
+  /* ── Tailwind status tints, re-authored for ink ─────────── */
+  --color-red-50: #2b1216;
+  --color-red-200: #5a2027;
+  --color-red-400: #f4767b;
+  --color-red-500: #ef4444;
+  --color-red-600: #f4676b;
+  --color-red-700: #fca5a5;
+  --color-red-800: #fecdd3;
+
+  --color-emerald-50: #0e2a20;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #34d399;
+  --color-emerald-700: #6ee7b7;
+
+  --color-amber-50: #2a1f0a;
+  --color-amber-200: #4a3a12;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #fbbf24;
+  --color-amber-700: #fcd34d;
+  --color-amber-800: #fde68a;
+  --color-amber-900: #fef3c7;
+
+  --color-orange-50: #2b1a0c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #fb923c;
+  --color-orange-800: #fdba74;
+
+  --color-sky-50: #0d2233;
+  --color-sky-500: #0ea5e9;
+  --color-sky-600: #38bdf8;
+  --color-sky-700: #7dd3fc;
+
+  --color-slate-100: #1e222b;
+  --color-slate-400: #64748b;
+  --color-slate-600: #9aa3b2;
+
+  /* Depth on a dark canvas comes from a lift line, not a drop shadow. */
+  --shadow-card: 0 1px 0 0 rgb(255 255 255 / 0.03) inset, 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-pop: 0 18px 40px -12px rgb(0 0 0 / 0.7), 0 2px 8px rgb(0 0 0 / 0.4);
 }
 
 :root {
-  color-scheme: light;
-  --surface-1: #ffffff;
-  --surface-2: #f8fafc;
+  color-scheme: dark;
 }
 
 html,
@@ -70,7 +125,7 @@ body {
 }
 
 body {
-  background: var(--surface-2);
+  background: var(--color-canvas);
   color: var(--color-ink-900);
   -webkit-font-smoothing: antialiased;
 }
@@ -78,21 +133,30 @@ body {
 /* Recessive, consistent scrollbars across the shell */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-color: #2e3542 transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #2e3542;
   border-radius: 999px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #3f4757;
 }
 *::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Autofill repaints inputs white in Chrome — hold the dark field. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-ink-900);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-ink-50) inset;
+  caret-color: var(--color-ink-900);
 }
 
 @keyframes fade-in {
@@ -119,12 +183,12 @@ body {
 @utility focus-brand {
   outline: none;
   &:focus-visible {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-brand-400);
+    box-shadow: 0 0 0 2px var(--color-canvas), 0 0 0 4px var(--color-brand-500);
   }
 }
 
 /* Recharts: keep the grid recessive and kill the default focus outline */
-.recharts-cartesian-grid line { stroke: #eef2f7; }
+.recharts-cartesian-grid line { stroke: #212630; }
 .recharts-surface:focus { outline: none; }
 .recharts-sector:focus,
 .recharts-rectangle:focus { outline: none; }

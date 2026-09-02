@@ -42,19 +42,19 @@ export const metadata: Metadata = {
     description:
       "Unit requisition to consolidated purchase order: simple, controlled and traceable central procurement.",
     url: "/",
-    images: [{ url: "/brand-mark.svg", width: 512, height: 512, alt: "Noor IT Solutions" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Noor IT Solutions" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Noor ERP — Noor IT Solutions",
     description: "Central Procurement, Purchase and Inventory management.",
-    images: ["/brand-mark.svg"],
+    images: ["/og.png"],
   },
   robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d9488",
+  themeColor: "#08090d",
   width: "device-width",
   initialScale: 1,
 };

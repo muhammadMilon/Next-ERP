@@ -395,7 +395,7 @@ export function PurchaseRequisition() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search PR…"
                 aria-label="Search requisitions"
-                className="focus-brand h-9 w-[200px] rounded-lg border border-ink-200 bg-white pl-8 pr-3 text-[12.5px] text-ink-800 placeholder:text-ink-400"
+                className="focus-brand h-9 w-[200px] rounded-lg border border-ink-200 bg-surface pl-8 pr-3 text-[12.5px] text-ink-800 placeholder:text-ink-400"
               />
             </div>
             <Select

@@ -232,7 +232,7 @@ export function ItemMaster() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search item…"
                 aria-label="Search items"
-                className="focus-brand h-9 w-[200px] rounded-lg border border-ink-200 bg-white pl-8 pr-3 text-[12.5px] text-ink-800 placeholder:text-ink-400"
+                className="focus-brand h-9 w-[200px] rounded-lg border border-ink-200 bg-surface pl-8 pr-3 text-[12.5px] text-ink-800 placeholder:text-ink-400"
               />
             </div>
             {(["All", ...ITEM_CATEGORY] as const).map((c) => (

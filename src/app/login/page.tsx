@@ -87,27 +87,27 @@ export default function LoginPage() {
   return (
     <div className="grid min-h-dvh lg:grid-cols-[1.05fr_minmax(0,520px)]">
       {/* Brand panel */}
-      <aside className="relative hidden overflow-hidden bg-gradient-to-br from-brand-50 via-white to-amber-50 p-10 lg:flex lg:flex-col lg:justify-between">
+      <aside className="relative hidden overflow-hidden bg-gradient-to-br from-brand-50 via-panel to-canvas p-10 lg:flex lg:flex-col lg:justify-between">
         <div
-          className="pointer-events-none absolute -right-24 -top-24 size-[420px] rounded-full bg-brand-200/40 blur-3xl"
+          className="pointer-events-none absolute -right-24 -top-24 size-[420px] rounded-full bg-brand-500/25 blur-3xl"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute -bottom-32 -left-20 size-[380px] rounded-full bg-amber-200/40 blur-3xl"
+          className="pointer-events-none absolute -bottom-32 -left-20 size-[380px] rounded-full bg-brand-400/12 blur-3xl"
           aria-hidden
         />
 
         <Logo size={40} className="relative" />
 
         <div className="relative max-w-lg">
-          <p className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-[11.5px] font-semibold uppercase tracking-[0.12em] text-brand-600 ring-1 ring-brand-200">
+          <p className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-50/80 px-3 py-1 text-[11.5px] font-semibold uppercase tracking-[0.12em] text-brand-600 ring-1 ring-brand-200">
             <BadgeCheck className="size-3.5" aria-hidden />
             Enterprise Edition
           </p>
           <h1 className="text-[36px] font-bold leading-[1.12] tracking-tight text-ink-900">
             Central procurement,
             <br />
-            <span className="bg-gradient-to-r from-brand-600 to-amber-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">
               simple, controlled, traceable.
             </span>
           </h1>
@@ -123,7 +123,7 @@ export default function LoginPage() {
               { icon: Boxes, title: "Inventory Management", body: "8 sub-modules from gate to stock ledger" },
               { icon: ShieldCheck, title: "Controls & Audit", body: "Role-based access with a full audit trail" },
             ].map((f) => (
-              <li key={f.title} className="flex gap-3 rounded-xl border border-white bg-white/70 p-3 backdrop-blur-sm">
+              <li key={f.title} className="flex gap-3 rounded-xl border border-ink-200/70 bg-surface/70 p-3 backdrop-blur-sm">
                 <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600">
                   <f.icon className="size-4" aria-hidden />
                 </span>
@@ -142,7 +142,7 @@ export default function LoginPage() {
       </aside>
 
       {/* Form panel */}
-      <main className="flex flex-col items-center justify-center bg-white px-5 py-10 sm:px-10">
+      <main className="flex flex-col items-center justify-center bg-canvas px-5 py-10 sm:px-10">
         <div className="w-full max-w-[380px]">
           <div className="mb-8 flex justify-center lg:hidden">
             <Logo size={40} />
@@ -172,7 +172,7 @@ export default function LoginPage() {
                     setErrors((x) => ({ ...x, email: undefined }));
                   }}
                   className={cn(
-                    "focus-brand h-11 w-full rounded-lg border bg-white pl-10 pr-3 text-[14px] text-ink-900 transition-colors placeholder:text-ink-400 hover:border-ink-300 focus:border-brand-400",
+                    "focus-brand h-11 w-full rounded-lg border bg-ink-50 pl-10 pr-3 text-[14px] text-ink-900 transition-colors placeholder:text-ink-400 hover:border-ink-300 focus:border-brand-400",
                     errors.email ? "border-red-400" : "border-ink-200",
                   )}
                   placeholder="you@company.com"
@@ -206,7 +206,7 @@ export default function LoginPage() {
                     setErrors((x) => ({ ...x, password: undefined }));
                   }}
                   className={cn(
-                    "focus-brand h-11 w-full rounded-lg border bg-white pl-10 pr-10 text-[14px] text-ink-900 transition-colors hover:border-ink-300 focus:border-brand-400",
+                    "focus-brand h-11 w-full rounded-lg border bg-ink-50 pl-10 pr-10 text-[14px] text-ink-900 transition-colors hover:border-ink-300 focus:border-brand-400",
                     errors.password ? "border-red-400" : "border-ink-200",
                   )}
                   placeholder="••••••••"

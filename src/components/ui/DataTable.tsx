@@ -164,7 +164,7 @@ export function DataTable({
   const hasActions = Boolean(onView || onEdit || onDelete || rowActions.length || inlineActions);
 
   return (
-    <div className="overflow-hidden rounded-xl border border-ink-200/80 bg-white shadow-card">
+    <div className="overflow-hidden rounded-xl border border-ink-200/80 bg-surface shadow-card">
       {/* Toolbar — filters live in one row above the table */}
       <div className="flex flex-wrap items-center gap-2 border-b border-ink-100 px-3 py-2.5">
         {title && <h3 className="mr-1 text-[14px] font-semibold tracking-tight text-ink-900">{title}</h3>}
@@ -179,7 +179,7 @@ export function DataTable({
             }}
             placeholder="Search records…"
             aria-label="Search records"
-            className="focus-brand h-9 w-full rounded-lg border border-ink-200 bg-white pl-8 pr-3 text-[13px] text-ink-900 placeholder:text-ink-400 hover:border-ink-300 focus:border-brand-400"
+            className="focus-brand h-9 w-full rounded-lg border border-ink-200 bg-ink-50 pl-8 pr-3 text-[13px] text-ink-900 placeholder:text-ink-400 hover:border-ink-300 focus:border-brand-400"
           />
         </div>
 
@@ -191,7 +191,7 @@ export function DataTable({
               setPage(0);
             }}
             aria-label="Filter by status"
-            className="focus-brand h-9 rounded-lg border border-ink-200 bg-white px-2.5 text-[13px] text-ink-700 hover:border-ink-300 focus:border-brand-400"
+            className="focus-brand h-9 rounded-lg border border-ink-200 bg-ink-50 px-2.5 text-[13px] text-ink-700 hover:border-ink-300 focus:border-brand-400"
           >
             <option value="">All statuses</option>
             {statusOptions.map((s) => (
@@ -206,7 +206,7 @@ export function DataTable({
           {toolbar}
           <Dropdown
             trigger={() => (
-              <span className="focus-brand inline-flex h-9 items-center gap-1.5 rounded-lg bg-white px-3 text-[13px] font-medium text-ink-700 ring-1 ring-inset ring-ink-200 transition-colors hover:bg-ink-50">
+              <span className="focus-brand inline-flex h-9 items-center gap-1.5 rounded-lg bg-ink-50 px-3 text-[13px] font-medium text-ink-700 ring-1 ring-inset ring-ink-200 transition-colors hover:bg-ink-50">
                 <Columns3 className="size-3.5" />
                 <span className="hidden sm:inline">Columns</span>
               </span>

@@ -68,7 +68,7 @@ export function CpsDashboard() {
           <Link
             key={t.label}
             href={t.href}
-            className="group rounded-xl border border-ink-200 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-pop"
+            className="group rounded-xl border border-ink-200 bg-surface p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-pop"
           >
             <p className="flex items-center justify-between text-[12.5px] font-medium text-ink-500">
               {t.label}
@@ -84,7 +84,7 @@ export function CpsDashboard() {
         {managementKpis.map((k) => (
           <div
             key={k.label}
-            className="flex items-center justify-between gap-3 rounded-xl border border-ink-200 bg-white px-4 py-3.5 shadow-card"
+            className="flex items-center justify-between gap-3 rounded-xl border border-ink-200 bg-surface px-4 py-3.5 shadow-card"
           >
             <span className="text-[12.5px] font-medium text-ink-500">{k.label}</span>
             <span className="font-mono text-[17px] font-bold text-ink-900">{k.value}</span>

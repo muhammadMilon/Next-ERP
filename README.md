@@ -94,14 +94,17 @@ the **three-way match** (PO → GRN → IQC).
 
 ## Design
 
-White surface with a teal brand ramp (`--color-brand-*`, primary `#0d9488`) and a navy command
-bar (`--color-navy-*`) for the procurement shell. No light/dark toggle — the product is
-light-only by design.
+Dark surface with an indigo brand ramp (`--color-brand-*`, primary `#6366f1`). Three surface
+levels carry the depth: `--color-canvas` behind the page, `--color-panel` for the sidebar and
+command bars, `--color-surface` for cards. No light/dark toggle — the product is dark-only by
+design, so every ramp in `globals.css` (including the Tailwind status tints it borrows) is
+authored dark → light: `bg-brand-50 text-brand-700` is a tinted chip with a legible label, and
+`bg-ink-50` is a *raised* panel inside a card, not a recessed one.
 
-The categorical chart palette is fixed-order and **validated**: worst adjacent CVD ΔE 9.1 and
-normal-vision ΔE 19.6 against the white chart surface. Ranked bars use a single hue (colour
-follows the entity, never its rank), there are no dual-axis charts — the pareto puts cumulative
-share on direct labels instead — and every chart ships a table view for the low-contrast slots.
+The categorical chart palette is fixed-order and lifted for the dark plot surface, so every hue
+clears 3:1 against it. Ranked bars use a single hue (colour follows the entity, never its rank),
+there are no dual-axis charts — the pareto puts cumulative share on direct labels instead — and
+every chart ships a table view for the low-contrast slots.
 
 ## Deploying to Vercel
 
@@ -152,7 +155,7 @@ src/
 │   ├── layout.tsx                fonts, store provider, toast host
 │   └── globals.css               design tokens (brand, ink, series, status)
 ├── components/
-│   ├── brand/Logo.tsx            Noor IT Solutions lockup (SVG monogram)
+│   ├── brand/Logo.tsx            Noor IT Solutions lockup (/company-logo.png + mark)
 │   ├── cps/                      CpsShell + the procurement UI kit
 │   ├── charts/                   palette · frame · chart primitives · plan renderer
 │   ├── layout/                   Navbar · Sidebar · Footer · CommandPalette · AppShell

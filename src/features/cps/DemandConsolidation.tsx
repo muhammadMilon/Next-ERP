@@ -431,7 +431,7 @@ export function DemandConsolidation() {
               { label: "Allocated Qty", value: totalAllocated.toLocaleString() },
               { label: "Allocation Value", value: `BDT ${money(totalValue)}` },
             ].map((s) => (
-              <div key={s.label} className="rounded-xl border border-ink-200 bg-white p-4 shadow-card">
+              <div key={s.label} className="rounded-xl border border-ink-200 bg-surface p-4 shadow-card">
                 <p className="text-[12px] font-medium text-ink-500">{s.label}</p>
                 <p className="mt-1.5 font-mono text-[20px] font-semibold text-ink-900">{s.value}</p>
               </div>

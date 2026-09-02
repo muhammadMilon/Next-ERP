@@ -3,8 +3,8 @@ import { Logo } from "@/components/brand/Logo";
 
 export default function NotFound() {
   return (
-    <div className="grid min-h-dvh place-items-center bg-ink-50 px-4">
-      <div className="flex max-w-md flex-col items-center gap-4 rounded-2xl border border-ink-200 bg-white p-10 text-center shadow-card">
+    <div className="grid min-h-dvh place-items-center bg-canvas px-4">
+      <div className="flex max-w-md flex-col items-center gap-4 rounded-2xl border border-ink-200 bg-surface p-10 text-center shadow-card">
         <Logo size={44} />
         <p className="font-mono text-[44px] font-bold leading-none text-brand-500">404</p>
         <h1 className="text-[18px] font-semibold text-ink-900">This screen is not in the module tree</h1>

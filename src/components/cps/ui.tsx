@@ -226,7 +226,7 @@ export function DataGrid<T>({
 export function NoAccess({ what, role }: { what: string; role: string }) {
   return (
     <div className="grid place-items-center rounded-xl border border-dashed border-ink-300 bg-ink-50 px-6 py-16 text-center">
-      <span className="mb-3 grid size-11 place-items-center rounded-full bg-white text-ink-400 ring-1 ring-ink-200">
+      <span className="mb-3 grid size-11 place-items-center rounded-full bg-ink-100 text-ink-400 ring-1 ring-ink-200">
         <Lock className="size-5" />
       </span>
       <p className="text-[14px] font-semibold text-ink-800">{what} is not available to the {role} role</p>
@@ -240,7 +240,7 @@ export function NoAccess({ what, role }: { what: string; role: string }) {
 
 export function InfoStat({ label, value, hint }: { label: string; value: ReactNode; hint?: string }) {
   return (
-    <div className="rounded-xl border border-ink-200 bg-white p-4 shadow-card">
+    <div className="rounded-xl border border-ink-200 bg-surface p-4 shadow-card">
       <p className="text-[12px] font-medium text-ink-500">{label}</p>
       <p className="mt-1.5 font-mono text-[22px] font-semibold leading-none tracking-tight text-brand-700">{value}</p>
       {hint && <p className="mt-1.5 text-[11.5px] text-ink-400">{hint}</p>}

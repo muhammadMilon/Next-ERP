@@ -130,7 +130,7 @@ export function PrApproval() {
           <div className="mt-4 flex flex-wrap justify-end gap-2">
             <Button
               size="md"
-              className="bg-amber-600 text-white hover:bg-amber-500"
+              className="bg-amber-500 text-canvas hover:bg-amber-400"
               icon={<XCircle className="size-4" />}
               onClick={() => decide("Rejected")}
             >

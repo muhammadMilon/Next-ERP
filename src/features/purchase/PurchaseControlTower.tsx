@@ -127,7 +127,7 @@ export function PurchaseControlTower({ loc }: ScreenProps) {
               <Link
                 key={stage.key}
                 href={stage.href}
-                className="group relative flex flex-col gap-2 rounded-xl border border-ink-200/80 bg-white p-3.5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card"
+                className="group relative flex flex-col gap-2 rounded-xl border border-ink-200/80 bg-surface p-3.5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card"
               >
                 <div className="flex items-center justify-between">
                   <span className="grid size-8 place-items-center rounded-lg bg-brand-50 text-brand-600">

@@ -102,7 +102,7 @@ export function QuotationComparison({ loc }: ScreenProps) {
               value={rfqNo}
               onChange={(e) => setRfqNo(e.target.value)}
               aria-label="Select RFQ"
-              className="focus-brand h-9 rounded-lg border border-ink-200 bg-white px-3 font-mono text-[13px] text-ink-800 hover:border-ink-300 focus:border-brand-400"
+              className="focus-brand h-9 rounded-lg border border-ink-200 bg-surface px-3 font-mono text-[13px] text-ink-800 hover:border-ink-300 focus:border-brand-400"
             >
               {rfqOptions.map((o) => (
                 <option key={o.rfq} value={o.rfq}>
@@ -186,7 +186,7 @@ export function QuotationComparison({ loc }: ScreenProps) {
                 <tbody>
                   {CRITERIA.map((c) => (
                     <tr key={c.key} className="border-b border-ink-100">
-                      <th className="sticky left-0 z-10 bg-white px-3 py-2.5 text-left text-[12.5px] font-medium text-ink-600">
+                      <th className="sticky left-0 z-10 bg-surface px-3 py-2.5 text-left text-[12.5px] font-medium text-ink-600">
                         {c.label}
                         <span className="ml-1 text-[10.5px] text-ink-400">{c.lowerIsBetter ? "↓ better" : "↑ better"}</span>
                       </th>
@@ -217,7 +217,7 @@ export function QuotationComparison({ loc }: ScreenProps) {
                     ] as const
                   ).map((c) => (
                     <tr key={c.key} className="border-b border-ink-100">
-                      <th className="sticky left-0 z-10 bg-white px-3 py-2.5 text-left text-[12.5px] font-medium text-ink-600">{c.label}</th>
+                      <th className="sticky left-0 z-10 bg-surface px-3 py-2.5 text-left text-[12.5px] font-medium text-ink-600">{c.label}</th>
                       {offers.map((o) => (
                         <td key={String(o.id)} className="px-3 py-2.5">
                           <Chip>{String(o[c.key] ?? "—")}</Chip>
@@ -227,7 +227,7 @@ export function QuotationComparison({ loc }: ScreenProps) {
                   ))}
 
                   <tr className="border-b border-ink-100">
-                    <th className="sticky left-0 z-10 bg-white px-3 py-2.5 text-left text-[12.5px] font-medium text-ink-600">Valid till</th>
+                    <th className="sticky left-0 z-10 bg-surface px-3 py-2.5 text-left text-[12.5px] font-medium text-ink-600">Valid till</th>
                     {offers.map((o) => (
                       <td key={String(o.id)} className="px-3 py-2.5 text-ink-700">
                         {dateShort(String(o.validTill))}
@@ -236,7 +236,7 @@ export function QuotationComparison({ loc }: ScreenProps) {
                   </tr>
 
                   <tr className="border-b border-ink-100">
-                    <th className="sticky left-0 z-10 bg-white px-3 py-2.5 text-left text-[12.5px] font-medium text-ink-600">Status</th>
+                    <th className="sticky left-0 z-10 bg-surface px-3 py-2.5 text-left text-[12.5px] font-medium text-ink-600">Status</th>
                     {offers.map((o) => (
                       <td key={String(o.id)} className="px-3 py-2.5">
                         <StatusPill value={String(o.status)} />

@@ -47,7 +47,7 @@ export function ChartFrame({
                   aria-label={v === "chart" ? "Chart view" : "Table view"}
                   className={cn(
                     "focus-brand grid size-6 place-items-center rounded-md transition-colors",
-                    view === v ? "bg-white text-brand-600 shadow-sm" : "text-ink-400 hover:text-ink-600",
+                    view === v ? "bg-brand-500/25 text-brand-700" : "text-ink-400 hover:text-ink-600",
                   )}
                 >
                   {v === "chart" ? <ChartColumnBig className="size-3.5" /> : <Table2 className="size-3.5" />}

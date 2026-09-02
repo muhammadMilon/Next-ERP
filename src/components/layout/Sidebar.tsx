@@ -61,7 +61,7 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
 
       <aside
         className={cn(
-          "no-print fixed inset-y-0 left-0 z-50 flex shrink-0 flex-col border-r border-ink-200 bg-white transition-[width,transform] duration-200 lg:static lg:translate-x-0",
+          "no-print fixed inset-y-0 left-0 z-50 flex shrink-0 flex-col border-r border-ink-200 bg-panel transition-[width,transform] duration-200 lg:static lg:translate-x-0",
           collapsed ? "w-[68px]" : "w-[272px]",
           mobileOpen ? "translate-x-0" : "-translate-x-full",
         )}
@@ -90,7 +90,7 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
                 onChange={(e) => setFilter(e.target.value)}
                 placeholder={`Filter ${LEAF_COUNT} screens…`}
                 aria-label="Filter navigation"
-                className="focus-brand h-8 w-full rounded-lg border border-ink-200 bg-ink-50/60 pl-8 pr-7 text-[12.5px] text-ink-800 placeholder:text-ink-400 hover:border-ink-300 focus:border-brand-400 focus:bg-white"
+                className="focus-brand h-8 w-full rounded-lg border border-ink-200 bg-ink-50/60 pl-8 pr-7 text-[12.5px] text-ink-800 placeholder:text-ink-400 hover:border-ink-300 focus:border-brand-400 focus:bg-surface"
               />
               {filter && (
                 <button
@@ -116,7 +116,7 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
               "focus-brand mb-2 flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] font-medium transition-colors",
               collapsed && "justify-center px-0",
               dashboardActive
-                ? "bg-gradient-to-r from-brand-500 to-brand-400 text-white shadow-sm"
+                ? "bg-brand-500 text-white shadow-sm"
                 : "text-ink-600 hover:bg-brand-50 hover:text-brand-700",
             )}
           >
@@ -141,7 +141,7 @@ export function Sidebar({ collapsed, mobileOpen, onCloseMobile }: SidebarProps) 
             {!collapsed && (
               <>
                 <span className="min-w-0 flex-1 truncate">Central Procurement</span>
-                <span className="shrink-0 rounded bg-white/80 px-1 font-mono text-[9.5px] font-bold text-brand-700">
+                <span className="shrink-0 rounded bg-brand-500/25 px-1 font-mono text-[9.5px] font-bold text-brand-700">
                   CPS
                 </span>
               </>

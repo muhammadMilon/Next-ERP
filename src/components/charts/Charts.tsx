@@ -18,7 +18,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { AXIS, SERIES, seriesColor } from "./palette";
+import { AXIS, CHART_CURSOR, CHART_SURFACE, SERIES, seriesColor } from "./palette";
 import { compact, currency, num } from "@/lib/utils/format";
 import type { ParetoPoint, Slice } from "@/lib/data/aggregate";
 
@@ -60,7 +60,7 @@ function ChartTooltip({
 }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="pointer-events-none min-w-[150px] rounded-lg border border-ink-200 bg-white/97 px-3 py-2 shadow-pop backdrop-blur-sm">
+    <div className="pointer-events-none min-w-[150px] rounded-lg border border-ink-200 bg-surface/97 px-3 py-2 shadow-pop backdrop-blur-sm">
       <p className="mb-1.5 text-[12px] font-semibold text-ink-900">{String(label ?? "")}</p>
       <ul className="space-y-1">
         {payload.map((p, i) => (
@@ -77,7 +77,7 @@ function ChartTooltip({
   );
 }
 
-const legendStyle = { fontSize: 11.5, paddingTop: 8, color: "#64748b" };
+const legendStyle = { fontSize: 11.5, paddingTop: 8, color: AXIS.tick.fill };
 
 const gridProps = { stroke: AXIS.grid, strokeDasharray: "0", vertical: false } as const;
 const xAxisProps = { stroke: AXIS.stroke, tick: AXIS.tick, tickLine: false, axisLine: { stroke: AXIS.grid } } as const;
@@ -110,7 +110,7 @@ export function AreaTrend({ data, unit }: { data: Slice[]; unit?: Unit }) {
           strokeWidth={2}
           fill="url(#areaFill)"
           dot={false}
-          activeDot={{ r: 4, strokeWidth: 2, stroke: "#fff" }}
+          activeDot={{ r: 4, strokeWidth: 2, stroke: CHART_SURFACE }}
         />
       </AreaChart>
     </ResponsiveContainer>
@@ -126,7 +126,7 @@ export function BarSeries({ data, unit }: { data: Slice[]; unit?: Unit }) {
         <CartesianGrid {...gridProps} />
         <XAxis dataKey="name" {...xAxisProps} tickFormatter={(v: string) => truncate(v, 12)} interval={0} angle={data.length > 6 ? -18 : 0} textAnchor={data.length > 6 ? "end" : "middle"} height={data.length > 6 ? 52 : 30} />
         <YAxis {...yAxisProps} tickFormatter={axisFmt(unit)} />
-        <Tooltip cursor={{ fill: "#f8fafc" }} content={<ChartTooltip unit={unit} singleLabel="Value" />} />
+        <Tooltip cursor={{ fill: CHART_CURSOR }} content={<ChartTooltip unit={unit} singleLabel="Value" />} />
         <Bar dataKey="value" name="Value" fill={SERIES[0]} radius={[4, 4, 0, 0]} maxBarSize={44} />
       </BarChart>
     </ResponsiveContainer>
@@ -148,7 +148,7 @@ export function HBar({ data, unit }: { data: Slice[]; unit?: Unit }) {
           width={128}
           tickFormatter={(v: string) => truncate(v, 18)}
         />
-        <Tooltip cursor={{ fill: "#f8fafc" }} content={<ChartTooltip unit={unit} singleLabel="Value" />} />
+        <Tooltip cursor={{ fill: CHART_CURSOR }} content={<ChartTooltip unit={unit} singleLabel="Value" />} />
         {/* One hue: these bars are ranked, and colour must follow the entity, not its rank. */}
         <Bar dataKey="value" name="Value" fill={SERIES[0]} radius={[0, 4, 4, 0]} maxBarSize={22} />
       </BarChart>
@@ -171,7 +171,7 @@ export function DonutSplit({ data, unit }: { data: Slice[]; unit?: Unit }) {
             innerRadius="58%"
             outerRadius="82%"
             paddingAngle={2}
-            stroke="#ffffff"
+            stroke={CHART_SURFACE}
             strokeWidth={2}
             minAngle={2}
           >
@@ -211,7 +211,7 @@ export function StackedBars({
         <CartesianGrid {...gridProps} />
         <XAxis dataKey="name" {...xAxisProps} tickFormatter={(v: string) => truncate(v, 12)} interval={0} angle={data.length > 5 ? -18 : 0} textAnchor={data.length > 5 ? "end" : "middle"} height={data.length > 5 ? 56 : 30} />
         <YAxis {...yAxisProps} tickFormatter={axisFmt(unit)} />
-        <Tooltip cursor={{ fill: "#f8fafc" }} content={<ChartTooltip unit={unit} />} />
+        <Tooltip cursor={{ fill: CHART_CURSOR }} content={<ChartTooltip unit={unit} />} />
         <Legend verticalAlign="bottom" iconType="circle" iconSize={8} wrapperStyle={legendStyle} />
         {shown.map((k, i) => (
           <Bar
@@ -220,7 +220,7 @@ export function StackedBars({
             name={k}
             stackId="a"
             fill={seriesColor(i)}
-            stroke="#ffffff"
+            stroke={CHART_SURFACE}
             strokeWidth={2}
             radius={i === shown.length - 1 ? [4, 4, 0, 0] : 0}
             maxBarSize={46}
@@ -248,7 +248,7 @@ export function GroupedBars({
         <CartesianGrid {...gridProps} />
         <XAxis dataKey="name" {...xAxisProps} tickFormatter={(v: string) => truncate(v, 12)} interval={0} angle={data.length > 4 ? -18 : 0} textAnchor={data.length > 4 ? "end" : "middle"} height={data.length > 4 ? 56 : 30} />
         <YAxis {...yAxisProps} tickFormatter={axisFmt(unit)} />
-        <Tooltip cursor={{ fill: "#f8fafc" }} content={<ChartTooltip unit={unit} />} />
+        <Tooltip cursor={{ fill: CHART_CURSOR }} content={<ChartTooltip unit={unit} />} />
         {keys.length > 1 && <Legend verticalAlign="bottom" iconType="circle" iconSize={8} wrapperStyle={legendStyle} />}
         {keys.map((k, i) => (
           <Bar key={k} dataKey={k} name={k} fill={seriesColor(i)} radius={[4, 4, 0, 0]} maxBarSize={26} />
@@ -286,7 +286,7 @@ export function LineTrend({
             stroke={seriesColor(i)}
             strokeWidth={2}
             dot={false}
-            activeDot={{ r: 4, strokeWidth: 2, stroke: "#fff" }}
+            activeDot={{ r: 4, strokeWidth: 2, stroke: CHART_SURFACE }}
           />
         ))}
       </LineChart>
@@ -312,12 +312,12 @@ export function ParetoBars({ data, unit }: { data: ParetoPoint[]; unit?: Unit })
         />
         <YAxis {...yAxisProps} tickFormatter={axisFmt(unit)} />
         <Tooltip
-          cursor={{ fill: "#f8fafc" }}
+          cursor={{ fill: CHART_CURSOR }}
           content={({ active, payload, label }) => {
             if (!active || !payload?.length) return null;
             const p = payload[0].payload as ParetoPoint;
             return (
-              <div className="pointer-events-none min-w-[170px] rounded-lg border border-ink-200 bg-white/97 px-3 py-2 shadow-pop">
+              <div className="pointer-events-none min-w-[170px] rounded-lg border border-ink-200 bg-surface/97 px-3 py-2 shadow-pop">
                 <p className="mb-1.5 text-[12px] font-semibold text-ink-900">{String(label)}</p>
                 <p className="flex justify-between gap-4 text-[12px] text-ink-600">
                   Quantity <span className="font-mono font-medium text-ink-900">{fmt(p.value, unit)}</span>
@@ -334,11 +334,11 @@ export function ParetoBars({ data, unit }: { data: ParetoPoint[]; unit?: Unit })
             dataKey="cumulative"
             position="top"
             fontSize={10.5}
-            fill="#64748b"
+            fill={AXIS.tick.fill}
             formatter={(v: unknown) => `${v}%`}
           />
           {data.map((_, i) => (
-            <Cell key={i} fill={i === 0 ? SERIES[0] : i < 3 ? "#f79263" : "#fdb68f"} />
+            <Cell key={i} fill={i === 0 ? SERIES[0] : i < 3 ? "#3273cd" : "#234677"} />
           ))}
         </Bar>
       </BarChart>

@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 
 const base =
-  "focus-brand w-full rounded-lg border border-ink-200 bg-white px-3 text-[13.5px] text-ink-900 placeholder:text-ink-400 transition-colors hover:border-ink-300 focus:border-brand-400 disabled:cursor-not-allowed disabled:bg-ink-50 disabled:text-ink-500";
+  "focus-brand w-full rounded-lg border border-ink-200 bg-ink-50 px-3 text-[13.5px] text-ink-900 placeholder:text-ink-400 transition-colors hover:border-ink-300 focus:border-brand-400 disabled:cursor-not-allowed disabled:bg-ink-50 disabled:text-ink-500";
 
 export function Field({
   label,

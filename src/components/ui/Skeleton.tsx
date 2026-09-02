@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils/cn";
 export function Skeleton({ className }: { className?: string }) {
   return (
     <div className={cn("relative overflow-hidden rounded-md bg-ink-100", className)}>
-      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/70 to-transparent [animation:shimmer_1.6s_infinite]" />
+      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/8 to-transparent [animation:shimmer_1.6s_infinite]" />
     </div>
   );
 }

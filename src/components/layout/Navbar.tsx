@@ -67,7 +67,7 @@ export function Navbar({
   const pinned = bookmarks.includes(pathname);
 
   return (
-    <header className="no-print sticky top-0 z-30 flex h-16 shrink-0 items-center gap-2 border-b border-ink-200 bg-white/95 px-3 backdrop-blur-sm sm:px-4">
+    <header className="no-print sticky top-0 z-30 flex h-16 shrink-0 items-center gap-2 border-b border-ink-200 bg-panel/85 px-3 backdrop-blur-md sm:px-4">
       {/* Mobile menu */}
       <button
         onClick={onOpenMobile}
@@ -91,7 +91,7 @@ export function Navbar({
 
       {/* Page identity */}
       <div className="flex min-w-0 items-center gap-2.5">
-        <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-amber-500 text-white shadow-sm">
+        <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-brand-500 text-white shadow-sm">
           {icon ? <NavIcon name={icon} className="size-4.5" /> : <LayoutDashboard className="size-4.5" aria-hidden />}
         </span>
         <div className="min-w-0 leading-tight">
@@ -103,11 +103,11 @@ export function Navbar({
       {/* Search trigger */}
       <button
         onClick={onOpenPalette}
-        className="focus-brand group mx-auto hidden h-9 w-full max-w-[380px] items-center gap-2 rounded-lg border border-ink-200 bg-ink-50/70 px-3 text-left transition-colors hover:border-brand-300 hover:bg-white md:flex"
+        className="focus-brand group mx-auto hidden h-9 w-full max-w-[380px] items-center gap-2 rounded-lg border border-ink-200 bg-ink-50/70 px-3 text-left transition-colors hover:border-brand-300 hover:bg-surface md:flex"
       >
         <Search className="size-4 shrink-0 text-ink-400 transition-colors group-hover:text-brand-500" aria-hidden />
         <span className="flex-1 truncate text-[13px] text-ink-400">Search modules…</span>
-        <kbd className="shrink-0 rounded border border-ink-200 bg-white px-1.5 py-0.5 font-mono text-[10px] text-ink-500">
+        <kbd className="shrink-0 rounded border border-ink-200 bg-surface px-1.5 py-0.5 font-mono text-[10px] text-ink-500">
           {mac ? "⌘" : "Ctrl"} K
         </kbd>
       </button>
@@ -123,7 +123,7 @@ export function Navbar({
 
         {/* Company chip */}
         <span className="mr-1 hidden items-center gap-2 rounded-full border border-ink-200 bg-ink-50/70 py-1 pl-1 pr-3 xl:flex">
-          <Image src="/company-logo.jpeg" alt="" width={22} height={22} className="rounded-full" />
+          <Image src="/company-mark.png" alt="" width={22} height={22} className="rounded-full" />
           <span className="text-[12.5px] font-semibold text-ink-700">{COMPANY.name}</span>
         </span>
 
@@ -173,7 +173,7 @@ export function Navbar({
             <span className="relative grid size-9 place-items-center rounded-lg text-ink-500 transition-colors hover:bg-ink-100">
               <Mail className="size-4.5" />
               {messagesUnread > 0 && (
-                <CountBadge value={messagesUnread} className="absolute -right-0.5 -top-0.5 ring-2 ring-white" />
+                <CountBadge value={messagesUnread} className="absolute -right-0.5 -top-0.5 ring-2 ring-surface" />
               )}
             </span>
           )}
@@ -230,7 +230,7 @@ export function Navbar({
             <span className="relative grid size-9 place-items-center rounded-lg text-ink-500 transition-colors hover:bg-ink-100">
               <Bell className="size-4.5" />
               {unreadCount > 0 && (
-                <CountBadge value={unreadCount} className="absolute -right-0.5 -top-0.5 bg-red-500 ring-2 ring-white" />
+                <CountBadge value={unreadCount} className="absolute -right-0.5 -top-0.5 bg-red-500 ring-2 ring-surface" />
               )}
             </span>
           )}
@@ -289,7 +289,7 @@ export function Navbar({
         <Dropdown
           trigger={() => (
             <span className="flex items-center gap-2 rounded-lg py-1 pl-1 pr-2 transition-colors hover:bg-ink-100">
-              <span className="grid size-8 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-amber-500 text-[12px] font-bold text-white">
+              <span className="grid size-8 shrink-0 place-items-center rounded-full bg-brand-500 text-[12px] font-bold text-white">
                 {initials(user?.name ?? "System Administrator")}
               </span>
               <span className="hidden text-left leading-tight sm:block">

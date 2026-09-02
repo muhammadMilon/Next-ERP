@@ -100,7 +100,7 @@ export function CpsAdministration() {
       <SectionHeading>Prototype Data</SectionHeading>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {counts.map((c) => (
-          <div key={c.label} className="rounded-xl border border-ink-200 bg-white px-4 py-3 shadow-card">
+          <div key={c.label} className="rounded-xl border border-ink-200 bg-surface px-4 py-3 shadow-card">
             <p className="text-[12px] text-ink-500">{c.label}</p>
             <p className="mt-1 font-mono text-[20px] font-bold leading-none text-ink-900">{c.value}</p>
           </div>

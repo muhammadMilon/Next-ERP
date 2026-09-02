@@ -39,7 +39,7 @@ export function PrototypeNavigation() {
           { label: "Approved PRs", value: kpis.approvedPrs },
           { label: "POs released", value: kpis.posReleased },
         ].map((s) => (
-          <div key={s.label} className="rounded-xl border border-ink-200 bg-white px-4 py-3 shadow-card">
+          <div key={s.label} className="rounded-xl border border-ink-200 bg-surface px-4 py-3 shadow-card">
             <p className="text-[12px] text-ink-500">{s.label}</p>
             <p className="mt-1 font-mono text-[20px] font-bold leading-none text-ink-900">{s.value}</p>
           </div>
@@ -60,7 +60,7 @@ function NavCard({ item, accent }: { item: CpsNavItem; accent?: boolean }) {
       href={item.href}
       className={cn(
         "group flex items-center gap-4 rounded-xl border px-4 py-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-pop",
-        accent ? "border-brand-100 bg-brand-50 hover:border-brand-300" : "border-ink-200 bg-white hover:border-brand-300",
+        accent ? "border-brand-100 bg-brand-50 hover:border-brand-300" : "border-ink-200 bg-surface hover:border-brand-300",
       )}
     >
       <span

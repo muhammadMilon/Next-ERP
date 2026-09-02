@@ -11,27 +11,27 @@ export function ToastHost() {
       toastOptions={{
         duration: 3000,
         style: {
-          background: "#ffffff",
-          color: "#0f172a",
-          border: "1px solid #e2e8f0",
+          background: "#171a21",
+          color: "#f5f7fa",
+          border: "1px solid #272c37",
           borderRadius: "12px",
-          boxShadow: "0 10px 30px -10px rgb(15 23 42 / 0.22), 0 2px 8px rgb(15 23 42 / 0.06)",
+          boxShadow: "0 18px 40px -12px rgb(0 0 0 / 0.7), 0 2px 8px rgb(0 0 0 / 0.4)",
           fontSize: "13px",
           fontWeight: 500,
           padding: "10px 14px",
           maxWidth: "380px",
         },
         success: {
-          iconTheme: { primary: "#17805b", secondary: "#ffffff" },
-          style: { borderLeft: "3px solid #17805b" },
+          iconTheme: { primary: "#2fbe83", secondary: "#0d1117" },
+          style: { borderLeft: "3px solid #2fbe83" },
         },
         error: {
-          iconTheme: { primary: "#b91c1c", secondary: "#ffffff" },
-          style: { borderLeft: "3px solid #b91c1c" },
+          iconTheme: { primary: "#f0575c", secondary: "#0d1117" },
+          style: { borderLeft: "3px solid #f0575c" },
         },
         loading: {
-          iconTheme: { primary: "#eb6834", secondary: "#ffffff" },
-          style: { borderLeft: "3px solid #eb6834" },
+          iconTheme: { primary: "#4d8df6", secondary: "#0d1117" },
+          style: { borderLeft: "3px solid #4d8df6" },
         },
       }}
     />

@@ -44,7 +44,7 @@ export function CpsShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col bg-ink-100">
+    <div className="flex min-h-dvh flex-col bg-canvas">
       {/* ── Command bar ─────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-40 bg-navy-900 text-white">
         <div className="mx-auto flex w-full max-w-[1500px] items-center gap-3 px-4 py-3 sm:px-6">
@@ -138,7 +138,7 @@ export function CpsShell({ children }: { children: ReactNode }) {
       {/* ── Rail + surface ──────────────────────────────────────────────── */}
       <div className="mx-auto flex w-full max-w-[1500px] flex-1 gap-0 px-0 sm:px-6 sm:py-5">
         <FunctionRail pathname={pathname} open={navOpen} onClose={() => setNavOpen(false)} />
-        <main className="min-w-0 flex-1 bg-white p-4 shadow-card sm:rounded-r-xl sm:p-6">{children}</main>
+        <main className="min-w-0 flex-1 bg-surface p-4 shadow-card sm:rounded-r-xl sm:p-6">{children}</main>
       </div>
     </div>
   );
@@ -160,7 +160,7 @@ function FunctionRail({
       )}
       <nav
         className={cn(
-          "z-40 w-[236px] shrink-0 border-r border-ink-200 bg-ink-50/70 p-3 sm:rounded-l-xl",
+          "z-40 w-[236px] shrink-0 border-r border-ink-200 bg-panel p-3 sm:rounded-l-xl",
           "fixed inset-y-0 left-0 overflow-y-auto pt-4 transition-transform duration-200 lg:static lg:translate-x-0 lg:pt-3",
           open ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
         )}
@@ -173,7 +173,7 @@ function FunctionRail({
             "mb-2 flex items-center gap-2 rounded-lg px-3 py-2 text-[13px] font-medium transition-colors",
             pathname === CPS_HOME
               ? "bg-brand-50 text-brand-700"
-              : "text-ink-600 hover:bg-white hover:text-ink-900",
+              : "text-ink-600 hover:bg-ink-100 hover:text-ink-900",
           )}
         >
           <NavIcon name="Radar" className="size-4" />
@@ -194,7 +194,7 @@ function FunctionRail({
                   "flex items-center gap-2 rounded-lg px-3 py-2 text-[13px] transition-colors",
                   groupActive
                     ? "bg-brand-50 font-semibold text-brand-700"
-                    : "text-ink-600 hover:bg-white hover:text-ink-900",
+                    : "text-ink-600 hover:bg-ink-100 hover:text-ink-900",
                 )}
               >
                 <NavIcon name={group.icon} className={cn("size-4", groupActive ? "text-brand-600" : "text-ink-400")} />
@@ -210,8 +210,8 @@ function FunctionRail({
                       className={cn(
                         "block rounded-md px-2 py-1.5 text-[12.5px] transition-colors",
                         pathname === item.href
-                          ? "bg-white font-medium text-brand-700 shadow-card"
-                          : "text-ink-500 hover:bg-white hover:text-ink-800",
+                          ? "bg-brand-50 font-medium text-brand-700"
+                          : "text-ink-500 hover:bg-ink-100 hover:text-ink-800",
                       )}
                     >
                       {item.label}

@@ -97,7 +97,7 @@ export function InlineFormCard({
               {derived.map((f) => {
                 const v = f.derived!(values as Row);
                 return (
-                  <div key={f.key} className="rounded-lg bg-white px-3 py-2 ring-1 ring-ink-100">
+                  <div key={f.key} className="rounded-lg bg-ink-100 px-3 py-2 ring-1 ring-ink-200">
                     <dt className="text-[11px] text-ink-500">{f.label}</dt>
                     <dd className="mt-0.5 font-mono text-[16px] font-semibold tabular-nums text-ink-900">
                       {f.type === "currency" ? currency(Number(v)) : num(Number(v), 2)}
@@ -113,7 +113,7 @@ export function InlineFormCard({
             </p>
           )}
 
-          <div className="rounded-lg bg-white px-3 py-2 ring-1 ring-ink-100">
+          <div className="rounded-lg bg-ink-100 px-3 py-2 ring-1 ring-ink-200">
             <p className="text-[11px] text-ink-500">Routing</p>
             <p className="mt-0.5 text-[12.5px] font-medium text-ink-800">
               {progress === 100 ? "Ready to submit" : `${requiredCount - completed} required field(s) left`}

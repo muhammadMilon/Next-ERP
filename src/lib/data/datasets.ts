@@ -140,12 +140,12 @@ const TONES: Record<string, Tone> = {
 export const statusTone = (value: string): Tone => TONES[value] ?? "neutral";
 
 export const TONE_CLASS: Record<Tone, string> = {
-  good: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
-  warn: "bg-amber-50 text-amber-800 ring-amber-600/25",
-  serious: "bg-orange-50 text-orange-800 ring-orange-600/25",
-  critical: "bg-red-50 text-red-700 ring-red-600/20",
-  info: "bg-sky-50 text-sky-700 ring-sky-600/20",
-  neutral: "bg-slate-100 text-slate-600 ring-slate-400/25",
+  good: "bg-emerald-50 text-emerald-700 ring-emerald-600/30",
+  warn: "bg-amber-50 text-amber-800 ring-amber-600/30",
+  serious: "bg-orange-50 text-orange-800 ring-orange-600/30",
+  critical: "bg-red-50 text-red-700 ring-red-600/30",
+  info: "bg-sky-50 text-sky-700 ring-sky-600/30",
+  neutral: "bg-slate-100 text-slate-600 ring-slate-400/30",
 };
 
 export const TONE_DOT: Record<Tone, string> = {

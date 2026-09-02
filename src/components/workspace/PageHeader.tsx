@@ -29,7 +29,7 @@ export function PageHeader({ loc, actions }: { loc: LeafLocation; actions?: Reac
 
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex min-w-0 items-start gap-3">
-          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-50 to-amber-50 text-brand-600 ring-1 ring-brand-100">
+          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-500/25 to-brand-500/5 text-brand-600 ring-1 ring-brand-200">
             <NavIcon name={group.icon} className="size-5" />
           </span>
           <div className="min-w-0">

@@ -50,11 +50,11 @@ export function Modal({
         role="dialog"
         aria-modal="true"
         className={cn(
-          "animate-pop-in relative z-10 my-auto w-full overflow-hidden rounded-2xl bg-white shadow-pop ring-1 ring-ink-200",
+          "animate-pop-in relative z-10 my-auto w-full overflow-hidden rounded-2xl bg-surface shadow-pop ring-1 ring-ink-200",
           widths[size],
         )}
       >
-        <header className="flex items-start justify-between gap-4 border-b border-ink-100 bg-gradient-to-r from-brand-50/70 to-white px-5 py-4">
+        <header className="flex items-start justify-between gap-4 border-b border-ink-100 bg-gradient-to-r from-brand-50/70 to-ink-50 px-5 py-4">
           <div className="min-w-0">
             <h2 className="truncate text-[15px] font-semibold tracking-tight text-ink-900">{title}</h2>
             {description && <p className="mt-0.5 text-[12.5px] leading-relaxed text-ink-500">{description}</p>}

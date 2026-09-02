@@ -35,7 +35,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   if (!hydrated || !user) {
     return (
-      <div className="grid min-h-dvh place-items-center bg-ink-50">
+      <div className="grid min-h-dvh place-items-center bg-canvas">
         <div className="flex flex-col items-center gap-4">
           <Logo size={44} />
           <div className="h-1 w-40 overflow-hidden rounded-full bg-ink-200">
@@ -48,7 +48,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="flex h-dvh overflow-hidden bg-ink-50">
+    <div className="flex h-dvh overflow-hidden bg-canvas">
       <Sidebar collapsed={collapsed} mobileOpen={mobileOpen} onCloseMobile={() => setMobileOpen(false)} />
 
       <div className="flex min-w-0 flex-1 flex-col">

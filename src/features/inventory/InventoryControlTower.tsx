@@ -165,7 +165,7 @@ export function InventoryControlTower({ loc }: ScreenProps) {
           <Link
             key={q.label}
             href={q.href}
-            className="group flex items-center justify-between gap-3 rounded-xl border border-ink-200/80 bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-pop"
+            className="group flex items-center justify-between gap-3 rounded-xl border border-ink-200/80 bg-surface p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-pop"
           >
             <div>
               <p className="text-[12px] uppercase tracking-[0.06em] text-ink-500">{q.label}</p>
@@ -188,7 +188,7 @@ export function InventoryControlTower({ loc }: ScreenProps) {
               <Link
                 key={stage.key}
                 href={stage.href}
-                className="group flex flex-col gap-2 rounded-xl border border-ink-200/80 bg-white p-3.5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card"
+                className="group flex flex-col gap-2 rounded-xl border border-ink-200/80 bg-surface p-3.5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card"
               >
                 <div className="flex items-center justify-between">
                   <span className="grid size-8 place-items-center rounded-lg bg-brand-50 text-brand-600">

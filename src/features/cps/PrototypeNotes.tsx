@@ -75,12 +75,12 @@ export function PrototypeNotes() {
               {note.href ? (
                 <Link
                   href={note.href}
-                  className="group flex flex-wrap items-center gap-4 rounded-xl border border-ink-200 bg-white px-4 py-3 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-pop"
+                  className="group flex flex-wrap items-center gap-4 rounded-xl border border-ink-200 bg-surface px-4 py-3 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-pop"
                 >
                   {body}
                 </Link>
               ) : (
-                <div className="flex flex-wrap items-center gap-4 rounded-xl border border-ink-200 bg-white px-4 py-3 shadow-card">
+                <div className="flex flex-wrap items-center gap-4 rounded-xl border border-ink-200 bg-surface px-4 py-3 shadow-card">
                   {body}
                 </div>
               )}

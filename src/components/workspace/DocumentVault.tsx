@@ -95,7 +95,7 @@ export function DocumentVault({ rows, spec }: { rows: Row[]; spec: DatasetSpec }
               return (
                 <li
                   key={d.id}
-                  className="group flex flex-col gap-2 rounded-xl border border-ink-200/80 bg-white p-3 transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-card"
+                  className="group flex flex-col gap-2 rounded-xl border border-ink-200/80 bg-surface p-3 transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-card"
                 >
                   <div className="flex items-start gap-2.5">
                     <span

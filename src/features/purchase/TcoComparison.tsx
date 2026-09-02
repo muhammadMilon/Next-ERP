@@ -94,7 +94,7 @@ export function TcoComparison({ loc }: ScreenProps) {
               value={rfqNo}
               onChange={(e) => setRfqNo(e.target.value)}
               aria-label="Select RFQ"
-              className="focus-brand h-9 rounded-lg border border-ink-200 bg-white px-3 font-mono text-[13px] text-ink-800 hover:border-ink-300 focus:border-brand-400"
+              className="focus-brand h-9 rounded-lg border border-ink-200 bg-surface px-3 font-mono text-[13px] text-ink-800 hover:border-ink-300 focus:border-brand-400"
             >
               {rfqOptions.map((o) => (
                 <option key={o.rfq} value={o.rfq}>
@@ -185,7 +185,7 @@ export function TcoComparison({ loc }: ScreenProps) {
                           <span
                             className={cn(
                               "grid size-6 place-items-center rounded-full font-mono text-[11px] font-bold",
-                              i === 0 ? "bg-emerald-600 text-white" : "bg-ink-100 text-ink-600",
+                              i === 0 ? "bg-emerald-600 text-canvas" : "bg-ink-100 text-ink-600",
                             )}
                           >
                             {i + 1}

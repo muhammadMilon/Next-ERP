@@ -143,7 +143,7 @@ export function ThreeWayMatch({ loc }: ScreenProps) {
             const share = totals.ordered ? (f.value / totals.ordered) * 100 : 0;
             const loss = i === 0 ? 0 : flow[i - 1].value - f.value;
             return (
-              <div key={f.label} className="rounded-xl border border-ink-200/80 bg-white p-3.5">
+              <div key={f.label} className="rounded-xl border border-ink-200/80 bg-surface p-3.5">
                 <div className="flex items-baseline justify-between">
                   <p className="text-[12px] font-medium uppercase tracking-[0.06em] text-ink-500">{f.label}</p>
                   <span className="font-mono text-[11px] text-ink-400">{pct(share, 1)}</span>
@@ -265,7 +265,7 @@ export function ThreeWayMatch({ loc }: ScreenProps) {
         }
       />
 
-      <div className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-ink-200 bg-white px-4 py-3 text-[12.5px] text-ink-500">
+      <div className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-ink-200 bg-surface px-4 py-3 text-[12.5px] text-ink-500">
         <StatusPill value={totals.matchRate > 60 ? "Matched" : "Variance"} />
         <span>
           {num(rows.length)} lines reconciled · {num(totals.heldCount)} held ·{" "}

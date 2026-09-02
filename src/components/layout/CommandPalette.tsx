@@ -126,7 +126,7 @@ function PaletteDialog({ onClose }: { onClose: () => void }) {
         role="dialog"
         aria-modal="true"
         aria-label="Search modules"
-        className="animate-pop-in relative z-10 w-full max-w-xl overflow-hidden rounded-2xl bg-white shadow-pop ring-1 ring-ink-200"
+        className="animate-pop-in relative z-10 w-full max-w-xl overflow-hidden rounded-2xl bg-surface shadow-pop ring-1 ring-ink-200"
       >
         <div className="flex items-center gap-2.5 border-b border-ink-100 px-4">
           <Search className="size-4 shrink-0 text-ink-400" aria-hidden />
@@ -187,11 +187,11 @@ function PaletteDialog({ onClose }: { onClose: () => void }) {
 
         <div className="flex items-center gap-4 border-t border-ink-100 bg-ink-50/60 px-4 py-2 text-[11px] text-ink-400">
           <span className="flex items-center gap-1">
-            <kbd className="rounded border border-ink-200 bg-white px-1 font-mono">↑</kbd>
-            <kbd className="rounded border border-ink-200 bg-white px-1 font-mono">↓</kbd> navigate
+            <kbd className="rounded border border-ink-200 bg-surface px-1 font-mono">↑</kbd>
+            <kbd className="rounded border border-ink-200 bg-surface px-1 font-mono">↓</kbd> navigate
           </span>
           <span className="flex items-center gap-1">
-            <kbd className="rounded border border-ink-200 bg-white px-1 font-mono">↵</kbd> open
+            <kbd className="rounded border border-ink-200 bg-surface px-1 font-mono">↵</kbd> open
           </span>
           <span className="ml-auto font-medium text-ink-400">{hits.length} results</span>
         </div>
