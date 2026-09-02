@@ -174,7 +174,7 @@ export function DataGrid<T>({
       <div className="overflow-x-auto rounded-lg border border-ink-200">
         <table className="w-full min-w-[640px] border-collapse text-[12.5px]">
           <thead>
-            <tr className="bg-navy-800 text-white">
+            <tr className="bg-brand-500 text-white">
               {columns.map((c) => (
                 <th
                   key={c.key}

@@ -161,12 +161,12 @@ export function TcoComparison({ loc }: ScreenProps) {
             <div className="overflow-x-auto">
               <table className="w-full min-w-max border-collapse text-[13px]">
                 <thead>
-                  <tr className="border-b border-ink-200 bg-ink-50/70">
+                  <tr className="border-b border-brand-400 bg-brand-500">
                     {["Rank", "Supplier", "Qty", ...COMPONENTS.map((c) => c.label), "Total TCO", "Per unit", "Share", "Status", ""].map((h) => (
                       <th
                         key={h}
                         className={cn(
-                          "whitespace-nowrap px-3 py-2.5 text-[11.5px] font-semibold uppercase tracking-wide text-ink-500",
+                          "whitespace-nowrap px-3 py-2.5 text-[11.5px] font-semibold uppercase tracking-wide text-white/90",
                           ["Rank", "Supplier", "Status"].includes(h) ? "text-left" : "text-right",
                         )}
                       >

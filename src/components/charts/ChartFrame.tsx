@@ -65,10 +65,10 @@ export function ChartFrame({
         ) : (
           <div className="max-h-[260px] overflow-auto rounded-lg border border-ink-100">
             <table className="w-full text-[12.5px]">
-              <thead className="sticky top-0 bg-ink-50">
-                <tr className="border-b border-ink-200">
-                  <th className="px-3 py-2 text-left font-semibold uppercase tracking-wide text-ink-500">Category</th>
-                  <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-ink-500">{valueLabel}</th>
+              <thead className="sticky top-0 bg-brand-500">
+                <tr className="border-b border-brand-400">
+                  <th className="px-3 py-2 text-left font-semibold uppercase tracking-wide text-white/90">Category</th>
+                  <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-white/90">{valueLabel}</th>
                 </tr>
               </thead>
               <tbody>

@@ -62,7 +62,7 @@ export function CpsAdministration() {
       <div className="overflow-x-auto rounded-lg border border-ink-200">
         <table className="w-full min-w-[760px] border-collapse text-[12.5px]">
           <thead>
-            <tr className="bg-navy-800 text-white">
+            <tr className="bg-brand-500 text-white">
               <th className="px-3 py-2.5 text-left text-[11.5px] font-semibold uppercase tracking-[0.04em]">Role</th>
               {PERMISSIONS.map((p) => (
                 <th key={p} className="px-3 py-2.5 text-center text-[11.5px] font-semibold uppercase tracking-[0.04em]">

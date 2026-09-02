@@ -168,17 +168,17 @@ export function QuotationComparison({ loc }: ScreenProps) {
             <div className="overflow-x-auto">
               <table className="w-full min-w-max border-collapse text-[13px]">
                 <thead>
-                  <tr className="border-b border-ink-200 bg-ink-50/70">
-                    <th className="sticky left-0 z-10 bg-ink-50/95 px-3 py-2.5 text-left text-[11.5px] font-semibold uppercase tracking-wide text-ink-500">
+                  <tr className="border-b border-brand-400 bg-brand-500">
+                    <th className="sticky left-0 z-10 bg-brand-500 px-3 py-2.5 text-left text-[11.5px] font-semibold uppercase tracking-wide text-white/90">
                       Criterion
                     </th>
                     {offers.map((o, i) => (
                       <th key={String(o.id)} className="min-w-[180px] px-3 py-2.5 text-left">
                         <span className="flex items-center gap-1.5">
-                          {i === 0 && <Crown className="size-3.5 text-amber-500" aria-label="Lowest price" />}
-                          <span className="text-[12.5px] font-semibold text-ink-900">{String(o.supplier)}</span>
+                          {i === 0 && <Crown className="size-3.5 text-amber-400" aria-label="Lowest price" />}
+                          <span className="text-[12.5px] font-semibold text-white">{String(o.supplier)}</span>
                         </span>
-                        <span className="mt-0.5 block font-mono text-[11px] text-ink-400">{String(o.quoteNo)}</span>
+                        <span className="mt-0.5 block font-mono text-[11px] text-white/70">{String(o.quoteNo)}</span>
                       </th>
                     ))}
                   </tr>

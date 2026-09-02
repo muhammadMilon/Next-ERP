@@ -251,13 +251,13 @@ export function DataTable({
         <div className="overflow-x-auto">
           <table className="w-full min-w-max border-collapse text-[13px]">
             <thead>
-              <tr className="border-b border-ink-200 bg-ink-50/70">
+              <tr className="border-b border-brand-400 bg-brand-500">
                 {visibleColumns.map((c) => (
                   <th
                     key={c.key}
                     style={{ width: c.width }}
                     className={cn(
-                      "whitespace-nowrap px-3 py-2.5 text-left text-[11.5px] font-semibold uppercase tracking-[0.05em] text-ink-500",
+                      "whitespace-nowrap px-3 py-2.5 text-left text-[11.5px] font-semibold uppercase tracking-[0.05em] text-white/90",
                       c.align === "right" && "text-right",
                       c.align === "center" && "text-center",
                       c.secondary && "hidden xl:table-cell",
@@ -267,12 +267,12 @@ export function DataTable({
                       type="button"
                       onClick={() => toggleSort(c.key)}
                       className={cn(
-                        "focus-brand inline-flex items-center gap-1 rounded transition-colors hover:text-ink-800",
-                        sort?.key === c.key && "text-brand-600",
+                        "focus-brand inline-flex items-center gap-1 rounded transition-colors hover:text-white",
+                        sort?.key === c.key && "text-white",
                       )}
                     >
                       {c.label}
-                      <ArrowUpDown className={cn("size-3 opacity-40", sort?.key === c.key && "opacity-100")} />
+                      <ArrowUpDown className={cn("size-3 opacity-50", sort?.key === c.key && "opacity-100")} />
                     </button>
                   </th>
                 ))}
